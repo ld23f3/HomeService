@@ -4,7 +4,9 @@ import com.etc.entity.Courier;
 
 public interface CourierService {
 	/**
-	 * 注册账号
+	 * 注册账号(注册界面需要验证快递员的工号和手机号)
+	 * 工号ID自动增长
+	 * COURIER_SEQ.nextval  自动增长序列
 	 * @param courier
 	 * @return
 	 */

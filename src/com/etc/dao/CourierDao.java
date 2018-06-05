@@ -1,5 +1,7 @@
 package com.etc.dao;
 
+import java.util.List;
+
 import com.etc.entity.Courier;
 
 public interface CourierDao {
@@ -10,7 +12,7 @@ public interface CourierDao {
 	 */
 	public boolean addCourier(Courier courier); 
 	/**
-	 * 验证用户名密码。/ 匹配 手机号码密码 /匹配 工号和密码
+	 * 匹配 手机号码密码 /匹配 工号和密码
 	 * @param account
 	 * @param pwd
 	 * @return
@@ -23,6 +25,10 @@ public interface CourierDao {
 	 * @return
 	 */
 	public boolean updateAccountPwd(String account,String oldPwd, String newPwd);
-	
+	/**
+	 * 查询所有的快递员.
+	 * @return
+	 */
+	public List<Courier> queryAllCourier();
 	
 }
