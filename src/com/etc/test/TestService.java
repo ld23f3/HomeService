@@ -49,16 +49,16 @@ public class TestService {
 
 		List<City> listC = cd.queryAllCity();
 		for (City city : listC) {
-			id = city.getCITYID();
-			List<TestMyAddres> listT = (List<TestMyAddres>) DBUtil2
-					.select("SELECT * FROM `district` WHERE `parent_id` = ?", TestMyAddres.class, id);
-			for (TestMyAddres testMyAddres : listT) {
-				County c = new County(Integer.parseInt(testMyAddres.getId()), testMyAddres.getName(), id);
-				System.out.println(testMyAddres);
-				System.out.println(ctd.addCounty(c));
-				
-			}
-			System.out.println(id);
+//			id = city.getCITYID();
+//			List<TestMyAddres> listT = (List<TestMyAddres>) DBUtil2
+//					.select("SELECT * FROM `district` WHERE `parent_id` = ?", TestMyAddres.class, id);
+//			for (TestMyAddres testMyAddres : listT) {
+//				County c = new County(Integer.parseInt(testMyAddres.getId()), testMyAddres.getName(), id);
+//				System.out.println(testMyAddres);
+//				System.out.println(ctd.addCounty(c));
+//				
+//			}
+			System.out.println(city);
 		}
 
 		// 从mysql查询信息
