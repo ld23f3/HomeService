@@ -19,4 +19,9 @@ public class CityServiceImpl implements CityService {
 		return cd.queryAllCity();
 	}
 
+	@Override
+	public City searchCityById(int id) {
+		return cd.queryCityById(id);
+	}
+
 }

@@ -7,7 +7,7 @@ import com.etc.entity.City;
 public interface CityService {
 	/**
 	 * 添加市级信息
-	 * 
+	 * (已测)
 	 * @param c
 	 * @return
 	 */
@@ -15,8 +15,15 @@ public interface CityService {
 
 	/**
 	 * 查找所有的市
-	 * 
+	 * (已测)
 	 * @return
 	 */
 	public List<City> queryAllCity();
+	/**
+	 * 根据ID查询指定的城市
+	 * (已测)
+	 * @param id
+	 * @return
+	 */
+	public City searchCityById(int id);
 }

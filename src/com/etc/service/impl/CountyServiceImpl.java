@@ -19,4 +19,9 @@ public class CountyServiceImpl implements CountyService {
 		return cd.queryAllCounty();
 	}
 
+	@Override
+	public County searchCountyById(int id) {
+		return cd.queryCountyById(id);
+	}
+
 }

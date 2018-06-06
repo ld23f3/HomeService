@@ -16,4 +16,10 @@ public interface ProvinceDao {
 	 * @return
 	 */
 	public List<Province> queryAllProvince();
+	/**
+	 * 根据ID查询指定省份
+	 * @param id
+	 * @return
+	 */
+	public Province queryProvinceById(int id);
 }

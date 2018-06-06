@@ -18,5 +18,9 @@ public class ProvinceServiceImpl implements ProvinceService {
 	public List<Province> queryAllProvince() {
 		return pd.queryAllProvince();
 	}
-	
+
+	@Override
+	public Province searchProvinceById(int id) {
+		return pd.queryProvinceById(id);
+	}
 }

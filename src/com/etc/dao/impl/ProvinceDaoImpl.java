@@ -21,4 +21,14 @@ public class ProvinceDaoImpl implements ProvinceDao {
 		return (List<Province>) DBUtil.select(sql, Province.class);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Province queryProvinceById(int id) {
+		String sql = "SELECT * FROM PROVINCE where PROVINCEID = ?";
+		List<Province> list =(List<Province>) DBUtil.select(sql, Province.class, id);
+		if(list.size()>0)
+			return list.get(0);
+		return null;
+	}
+
 }
