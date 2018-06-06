@@ -18,5 +18,5 @@ public class ProvinceServiceImpl implements ProvinceService {
 	public List<Province> queryAllProvince() {
 		return pd.queryAllProvince();
 	}
-
+	
 }
