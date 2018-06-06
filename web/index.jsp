@@ -33,7 +33,7 @@ $(function(){
 <!--头部-->
 <div class="head_bg">
 	<div class="head clearfix">
-    	<div class="logo"><a href="index.html"><img src="Assets/images/logo.png" alt=""/></a></div>
+    	<div class="logo"><a href="index.jsp"><img src="Assets/images/logo.png" alt=""/></a></div>
         <div class="menu">
         	<div class="head_top">
 
@@ -42,11 +42,11 @@ $(function(){
             </div>
             <ul class="clearfix">
             	<li class="now"><a href="index.html">首页</a></li>
-                <li><a href="search.html">订单查询</a></li>
-                <li><a href="follow.html">货物追踪</a></li>
+                <li><a href="search.jsp">订单查询</a></li>
+                <li><a href="follow.jsp">货物追踪</a></li>
                <!-- <li class="news"><a href="">消息<span>12</span></a></li>-->
-                <li><a href="count.html">运费试算</a></li>
-                <li><a href="about.html">关于宅急送</a></li>
+                <li><a href="count.jsp">运费试算</a></li>
+                <li><a href="about.jsp">关于宅急送</a></li>
             </ul>
         </div>
     </div>
