@@ -2,28 +2,39 @@ package com.etc.test;
 
 import java.util.List;
 
-import com.etc.dao.CityDao;
-import com.etc.dao.CountyDao;
-import com.etc.dao.ProvinceDao;
-import com.etc.dao.impl.CityDaoImpl;
-import com.etc.dao.impl.CountyDaoImpl;
-import com.etc.dao.impl.ProvinceDaoImpl;
-import com.etc.entity.City;
-import com.etc.entity.County;
-import com.etc.entity.Province;
-import com.etc.util.DBUtil2;
+import com.etc.entity.Courier;
+import com.etc.service.CourierService;
+import com.etc.service.impl.CourierServiceImpl;
 
 public class TestService {
 	public static void main(String[] args) {
+
+		// 测试快递员类
+		CourierService cs = new CourierServiceImpl();
+		//测试登录
+		//System.out.println(cs.login("8801", "jlh12345"));
+		//测试查询所有快递员
+		//		List<Courier> list = cs.getAllCourier();
+//		for (Courier courier : list) {
+//			System.out.println(courier);
+//		}
+		//测试快递员修改密码
+		System.out.println(cs.updateAccountPwd("8801","123456", "jlh12345"));
 		// 新增快递员数据
 		// CourierService cs = new CourierServiceImpl();
 		// Courier courier = new Courier("在这个区域", "姜丽红", "jlh12345", "13800000000");
 		// System.out.println(cs.register(courier));
-		int id = 0;
+		// int id = 0;
 		// 新增省份信息
-		ProvinceDao pd = new ProvinceDaoImpl();
-		CityDao cd = new CityDaoImpl();
-		CountyDao ctd = new CountyDaoImpl();
+		// 测试根据ID地域查询
+		// ProvinceService ps = new ProvinceServiceImpl();
+		// CityService cs = new CityServiceImpl();
+		// CountyService cts = new CountyServiceImpl();
+		// System.out.println( ps.searchProvinceById(1));
+		//
+		// System.out.println(cs.searchCityById(389));
+		// System.out.println(cts.searchCountyById(538));
+
 		// 测试插入县信息
 		// County c = new County(12, "大五", 502);
 		// System.out.println(ctd.addCounty(c));
@@ -47,19 +58,22 @@ public class TestService {
 		// System.out.println(id);
 		// }
 
-		List<City> listC = cd.queryAllCity();
-		for (City city : listC) {
-//			id = city.getCITYID();
-//			List<TestMyAddres> listT = (List<TestMyAddres>) DBUtil2
-//					.select("SELECT * FROM `district` WHERE `parent_id` = ?", TestMyAddres.class, id);
-//			for (TestMyAddres testMyAddres : listT) {
-//				County c = new County(Integer.parseInt(testMyAddres.getId()), testMyAddres.getName(), id);
-//				System.out.println(testMyAddres);
-//				System.out.println(ctd.addCounty(c));
-//				
-//			}
-			System.out.println(city);
-		}
+		// 测试查询城市信息
+		// List<City> listC = cd.queryAllCity();
+		// for (City city : listC) {
+		// id = city.getCITYID();
+		// List<TestMyAddres> listT = (List<TestMyAddres>) DBUtil2
+		// .select("SELECT * FROM `district` WHERE `parent_id` = ?", TestMyAddres.class,
+		// id);
+		// for (TestMyAddres testMyAddres : listT) {
+		// County c = new County(Integer.parseInt(testMyAddres.getId()),
+		// testMyAddres.getName(), id);
+		// System.out.println(testMyAddres);
+		// System.out.println(ctd.addCounty(c));
+		//
+		// }
+		// System.out.println(city);
+		// }
 
 		// 从mysql查询信息
 		// List<TestMyAddres> list= (List<TestMyAddres>) DBUtil2.select("SELECT * FROM

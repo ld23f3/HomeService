@@ -1,5 +1,7 @@
 package com.etc.service.impl;
 
+import java.util.List;
+
 import com.etc.dao.CourierDao;
 import com.etc.dao.impl.CourierDaoImpl;
 import com.etc.entity.Courier;
@@ -22,6 +24,11 @@ public class CourierServiceImpl implements CourierService {
 	@Override
 	public boolean updateAccountPwd(String account, String oldPwd, String newPwd) {
 		return cd.updateAccountPwd(account, oldPwd, newPwd);
+	}
+
+	@Override
+	public List<Courier> getAllCourier() {
+		return cd.queryAllCourier();
 	}
 	
 

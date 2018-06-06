@@ -19,7 +19,7 @@ public interface CourierDao {
 	 */
 	public Courier checkAccountPwd(String account,String pwd);
 	/**
-	 * 修改用户名修改密码(需要匹配旧密码)
+	 * 根据账号修改密码(需要匹配旧密码)
 	 * @param account
 	 * @param pwd
 	 * @return

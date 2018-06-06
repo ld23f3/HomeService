@@ -1,5 +1,7 @@
 package com.etc.service;
 
+import java.util.List;
+
 import com.etc.entity.Courier;
 
 public interface CourierService {
@@ -13,7 +15,9 @@ public interface CourierService {
 	public boolean register(Courier courier);
 	/**
 	 * 登录
-	 * @param account 账号(工号/名字/手机号均可)
+	 * 内部会判断该员工的在职状态 0在职,1 离职
+	 *  [ COURIERSTATUS]
+	 * @param account 账号(工号/手机号均可作为账号)
 	 * @param pwd 密码
 	 * @return
 	 */
@@ -26,4 +30,9 @@ public interface CourierService {
 	 * @return
 	 */
 	public boolean updateAccountPwd(String account,String oldPwd, String newPwd);
+	/**
+	 * 获取所有的快递员信息.
+	 * @return
+	 */
+	public List<Courier> getAllCourier();
 }	
