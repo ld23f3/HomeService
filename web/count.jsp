@@ -31,7 +31,7 @@
 							<a href="search.jsp">订单查询</a>
 						</li>
 						<li>
-							<a href="search.jsp">货物追踪</a>
+							<a href="follow.jsp">货物追踪</a>
 						</li>
 						<!-- <li class="news"><a href="">消息<span>12</span></a></li>-->
 						<li class="now">
