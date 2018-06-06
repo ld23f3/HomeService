@@ -41,7 +41,7 @@ $(function(){
                 <a href="">加入收藏</a>
             </div>
             <ul class="clearfix">
-            	<li class="now"><a href="index.html">首页</a></li>
+            	<li class="now"><a href="index.jsp">首页</a></li>
                 <li><a href="search.jsp">订单查询</a></li>
                 <li><a href="follow.jsp">货物追踪</a></li>
                <!-- <li class="news"><a href="">消息<span>12</span></a></li>-->
