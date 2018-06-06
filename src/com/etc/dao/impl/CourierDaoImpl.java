@@ -10,17 +10,21 @@ import com.etc.util.DBUtil;
 public class CourierDaoImpl implements CourierDao {
 	@Override
 	public Courier checkAccountPwd(String account, String pwd) {
-		String sql = "select * FROM courier where (COURIERNO = ? or COURIERTEL = ?) and COURIERPWD = ?  and COURIERSTATUS = 0";
+		String sql = "select * FROM courier where (COURIERNO = ? or COURIERTEL = ?) and COURIERPWD = ?";
 		List<Courier> list = (List<Courier>) DBUtil.select(sql, Courier.class, account, account, pwd);
 		if (list.size() > 0)
 			return list.get(0);
 		return null;
 	}
 
+	
 	@Override
+	/**
+	 * 添加账号的时候需要用到事务访问业务(员工生成..)
+	 */
 	public boolean addCourier(Courier courier) {
-		String sql = "INSERT INTO COURIER VALUES(COURIER_SEQ.nextval,?,?,?,?,1,SYSDATE,SYSDATE)";
-		return DBUtil.execute(sql, courier.getCOURIERREGION(), courier.getCOURIERNAME(), courier.getCOURIERPWD(),
+		String sql = "INSERT INTO COURIER VALUES(?,?,?,?,?,1,SYSDATE,SYSDATE)";
+		return DBUtil.execute(sql, courier.getCOURIERNO(),courier.getCOURIERREGION(), courier.getCOURIERNAME(), courier.getCOURIERPWD(),
 				courier.getCOURIERTEL()) > 0;
 	}
 
