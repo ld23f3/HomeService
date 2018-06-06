@@ -17,7 +17,6 @@
     	<div class="logo"><a href="index.jsp"><img src="Assets/images/logo.png" alt=""/></a></div>
         <div class="menu">
         	<div class="head_top">
-                <a href="">设为首页</a>
                 <a href="">加入收藏</a>
             </div>
             <ul class="clearfix">

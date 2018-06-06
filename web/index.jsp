@@ -35,9 +35,7 @@ $(function(){
 	<div class="head clearfix">
     	<div class="logo"><a href="index.jsp"><img src="Assets/images/logo.png" alt=""/></a></div>
         <div class="menu">
-        	<div class="head_top">
-
-                <a href="">设为首页</a>
+        	<div class="head_top">              
                 <a href="">加入收藏</a>
             </div>
             <ul class="clearfix">
