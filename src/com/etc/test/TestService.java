@@ -3,15 +3,29 @@ package com.etc.test;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.etc.dao.impl.GoodsDaoImpl;
+import com.etc.entity.City;
 import com.etc.entity.County;
+import com.etc.entity.Province;
 import com.etc.service.CityService;
 import com.etc.service.CountyService;
+import com.etc.service.GoodsService;
+import com.etc.service.ProvinceService;
 import com.etc.service.impl.CityServiceImpl;
 import com.etc.service.impl.CountyServiceImpl;
+import com.etc.service.impl.GoodsServiceImpl;
+import com.etc.service.impl.ProvinceServiceImpl;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
-
+		GoodsService gs = new GoodsServiceImpl();
+		System.out.println( gs.queryGoodsInfo(20180001));
+		
+		// OrderDaoService ods = new OrderDaoServiceImpl();
+		// List<Order> list = ods.queryAllOrderByCourierId(0);
+		// for (Order order : list) {
+		// System.out.println(order);
+		// }
 		// 测试快递员类
 		// CourierService cs = new CourierServiceImpl();
 		// 新增快递员数据
@@ -44,15 +58,19 @@ public class TestService {
 		// 新增省份信息
 		// 测试根据ID地域查询
 		// ProvinceService ps = new ProvinceServiceImpl();
-		CityService cs = new CityServiceImpl();
-		CountyService cts = new CountyServiceImpl();
-
+		// CityService cs = new CityServiceImpl();
+		// CountyService cts = new CountyServiceImpl();
 		// **测试指定省份的下属城市
 
-		// List<City> list = cs.queryCityByProvinceid(1);
-		// for (City city : list) {
-		// System.out.println(city);
-		// }
+//		 List<City> list = cs.queryCityByProvinceid(4);
+//		 for (City city : list) {
+//		 System.out.println(city);
+//		
+//		 County c = new County(city.getCITYID(),
+//		 city.getCITYNAME(), city.getPROVINCEID());
+//		 System.out.println(cts.addCounty(c));
+//		
+//		 }
 
 		// **测试指定城市的下属区县
 		// List<County> list = cts.queryCountyByCityid(460);

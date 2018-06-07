@@ -15,9 +15,9 @@ import org.apache.commons.beanutils.BeanUtils;
  * 数据库操作的辅助类
  */
 public class DBUtil {
-	
+
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private static final String URL = "jdbc:oracle:thin:@192.168.13.71:1521:orcl";//jdbc:oracle:thin:@server:1521:db//"jdbc:mysql://localhost:3306/cmsdb?useunicode=true&characterEncoding=utf-8";
+	private static final String URL = "jdbc:oracle:thin:@192.168.13.71:1521:orcl";// jdbc:oracle:thin:@server:1521:db//"jdbc:mysql://localhost:3306/cmsdb?useunicode=true&characterEncoding=utf-8";
 	private static final String USER = "scott"; // 用户名
 	private static final String PASSWORD = "tiger";// 密码
 
@@ -51,8 +51,7 @@ public class DBUtil {
 	 * @param conn
 	 *            连接对象
 	 */
-	public static void close(ResultSet rs, PreparedStatement pstmt,
-			Connection conn) {
+	public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
 			if (rs != null) {
 				rs.close();
@@ -78,8 +77,8 @@ public class DBUtil {
 	 * @return
 	 * @throws SQLException
 	 */
-	private static PreparedStatement setPstmt(String sql, Connection conn,
-			PreparedStatement pstmt, Object... param) throws SQLException {
+	private static PreparedStatement setPstmt(String sql, Connection conn, PreparedStatement pstmt, Object... param)
+			throws SQLException {
 		pstmt = conn.prepareStatement(sql);
 		if (param != null) {
 			for (int i = 0; i < param.length; i++) {
@@ -110,10 +109,8 @@ public class DBUtil {
 	/**
 	 * 通用的增删改操作(事务访问)
 	 * 
-	 * 2018年6月7日10:37:07
-	 * 修改人:lhc
-	 * 修改:修改了异常处理的返回值
-	 * 原因:需要操作多个表,我们需要对其返回值进行判断,然后才能做回滚操作
+	 * 2018年6月7日10:37:07 修改人:lhc 修改:修改了异常处理的返回值 原因:需要操作多个表,我们需要对其返回值进行判断,然后才能做回滚操作
+	 * 
 	 * @param sql
 	 * @param conn
 	 * @param param
@@ -125,9 +122,9 @@ public class DBUtil {
 			pstmt = setPstmt(sql, conn, pstmt, param);
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
-			//这里最好得到异常信息
-			//e.printStackTrace();
-			//throw new RuntimeException("数据库操作失败!", e);
+			// 这里最好得到异常信息
+			// e.printStackTrace();
+			// throw new RuntimeException("数据库操作失败!", e);
 			return -1;
 		} finally {
 			close(null, pstmt, null);
@@ -137,9 +134,12 @@ public class DBUtil {
 	/**
 	 * 通用查询方法
 	 * 
-	 * @param sql  要查询的sql语句
-	 * @param cla  Class对象
-	 * @param param  参数
+	 * @param sql
+	 *            要查询的sql语句
+	 * @param cla
+	 *            Class对象
+	 * @param param
+	 *            参数
 	 * @return
 	 */
 	public static Object select(String sql, Class cla, Object... param) {
@@ -160,8 +160,7 @@ public class DBUtil {
 	 * @param param
 	 * @return
 	 */
-	public static Object select(String sql, Connection conn, Class cla,
-			Object... param) {
+	public static Object select(String sql, Connection conn, Class cla, Object... param) {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		List<Object> list = new ArrayList<Object>();
@@ -170,8 +169,8 @@ public class DBUtil {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				// ?rs 结果集 cla Class对象
-				//object其实就是数据表结构对应的一条实体记录,object就是那个实体类对象
-				//这个方法convert是将结果集和cla对象进行转换
+				// object其实就是数据表结构对应的一条实体记录,object就是那个实体类对象
+				// 这个方法convert是将结果集和cla对象进行转换
 				Object object = convert(rs, cla);
 				list.add(object);
 			}
@@ -243,29 +242,31 @@ public class DBUtil {
 	/**
 	 * 查询结果的转换(关系数据库 <=>java中类面向对象)
 	 * 
-	 * @param rs 结果集合
-	 * @param cla  Class类对象
+	 * @param rs
+	 *            结果集合
+	 * @param cla
+	 *            Class类对象
 	 * @return
 	 */
 	public static Object convert(ResultSet rs, Class cla) {
 		try {
-			//getName 类名 包含了完整包结构类名
+			// getName 类名 包含了完整包结构类名
 			if (cla.getName().equals("java.lang.Object")) {
 				return rs.getObject(1);
 			}
 			// 创建实体类的实例 Class类对象的方法，创建指定对象的实例
-			// new Goods();  new News();  new person();  new Users();
-			//newInstance 会调用实体类的 无参数的构造
-			Object object = cla.newInstance(); 
+			// new Goods(); new News(); new person(); new Users();
+			// newInstance 会调用实体类的 无参数的构造
+			Object object = cla.newInstance();
 			//// 结果集头信息对象
-			//rs.getMetaData() 获取此 ResultSet 对象的列的编号、类型和属性。
+			// rs.getMetaData() 获取此 ResultSet 对象的列的编号、类型和属性。
 			///
 			ResultSetMetaData metaData = rs.getMetaData();
 			// 循环为实体类的实例的属性赋值 getColumnCount得到列的个数
 			for (int i = 1; i <= metaData.getColumnCount(); i++) {
-				// 获取列名  name
+				// 获取列名 name
 				String name = metaData.getColumnLabel(i);
-				//// 所有要注意：列名[查询语句中列名]与属性名必须一致。最好遵循骆驼命名方法.  rs.getObject(i) 结果集中的查询结果和对象匹配
+				//// 所有要注意：列名[查询语句中列名]与属性名必须一致。最好遵循骆驼命名方法. rs.getObject(i) 结果集中的查询结果和对象匹配
 				// select empNo as eNo,empName as eName from employee
 				BeanUtils.setProperty(object, name, rs.getObject(i));
 			}
@@ -285,8 +286,7 @@ public class DBUtil {
 	 * @param param
 	 * @return
 	 */
-	public static PageData getPage(String sql, Integer page, Integer pageSize,
-			Class cla, Object... param) {
+	public static PageData getPage(String sql, Integer page, Integer pageSize, Class cla, Object... param) {
 		String selSql = "select count(1) from (" + sql + ") t";
 		if (page == null) {
 			page = 1;
@@ -311,10 +311,8 @@ public class DBUtil {
 	 * @param identity
 	 * @return
 	 */
-	public static PageData getPage(Integer page, Integer pageSize, Class cla,
-			String identity) {
-		String name = cla.getName().substring(
-				cla.getName().lastIndexOf(".") + 1);// 根据命名规则从类名获取数据库表名
+	public static PageData getPage(Integer page, Integer pageSize, Class cla, String identity) {
+		String name = cla.getName().substring(cla.getName().lastIndexOf(".") + 1);// 根据命名规则从类名获取数据库表名
 		String selSql = "select count(*) from " + name;// 获取总数
 		if (page == null) {
 			page = 1;
@@ -324,12 +322,50 @@ public class DBUtil {
 		}
 		int start = (page - 1) * pageSize;
 		Integer count = Integer.parseInt(getFirst(selSql, null).toString());
-		selSql = "select top " + pageSize + " * from " + name + " where "
-				+ identity + " not in (select top " + start + " " + identity
-				+ " from " + name + " )"; // 拼接查询语句
+		selSql = "select top " + pageSize + " * from " + name + " where " + identity + " not in (select top " + start
+				+ " " + identity + " from " + name + " )"; // 拼接查询语句
 		List list = (List) select(selSql, cla, null);
 		PageData data = new PageData(list, count, pageSize, page);
 		return data;
 	}
 
+	/**
+	 * 分页操作 oracle
+	 * 
+	 * @param page
+	 * @param pageSize
+	 * @param cla
+	 * @param identity
+	 * @return
+	 */
+	public static PageData getOraclePage(String sql, Integer page, Integer pageSize, Class cla, Object... param) {
+		// sql select * from news
+		// select count(1) from (select * from news) t --得到记录总数
+		String selSql = "select count(1) from (" + sql + ") t";
+		if (page == null) {
+			page = 1;
+		}
+		if (pageSize == null) {
+			pageSize = 10;
+		}
+		// 查询得到总记录数
+		Integer count = Integer.parseInt(getFirst(selSql, param).toString());
+		// 实现简单的分页语句
+		// 如果是oracle数据库的话 应该使用rownum来实现简单的分页操作
+		int start = (page - 1) * pageSize; // 起始位置算法
+		// + 其实不太好 最好用stringBuffer stringBuilder append
+
+		// rownum<=10 这个10应该是结束位置 page = 2 每页显示10条 ->第11到第20条
+		int end = page * pageSize;
+		// r>5 这个是过滤掉的部分
+
+		// sql 其实就是 (select * from emp) tbl
+		String oracleSql = "select * from (select tbl.*,rownum r from (" + sql + ") tbl where rownum<=" + end
+				+ ") mytable  where r>" + start;
+
+		List list = (List) select(oracleSql, cla, param);
+		// 创建一个PageData对象
+		PageData data = new PageData(list, count, pageSize, page);
+		return data;
+	}
 }

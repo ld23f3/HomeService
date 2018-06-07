@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.etc.dao.CityDao;
 import com.etc.entity.City;
-import com.etc.entity.Province;
 import com.etc.util.DBUtil;
 
 @SuppressWarnings("unchecked")
