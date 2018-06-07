@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 import com.etc.entity.Courier;
 import com.etc.entity.Order;
 import com.etc.service.CourierService;
+import com.etc.service.OrderDaoService;
 import com.etc.service.impl.CourierServiceImpl;
+import com.etc.service.impl.OrderDaoServiceImpl;
 import com.etc.util.PageData;
 
 /**
@@ -22,6 +24,7 @@ public class CourierController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 创建Service对象
 	CourierService cs = new CourierServiceImpl();
+	OrderDaoService ods = new OrderDaoServiceImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -77,31 +80,34 @@ public class CourierController extends HttpServlet {
 			response.sendRedirect("Back/courierlogin.jsp");
 
 		} else if ("queryOrderByPage0".equals(op)) {
-			int page = 1;
+			
+			int countyId = 15250002/10000;
+			int pageNum = 1;
 			int pageSize = 10;
-			String senderAddressLike = "";
+			int status = 0;
+			String queryLike = "";
 
 			// 获取页面传递过来的页码page参数
-			if (request.getParameter("page") != null) {
-				page = Integer.parseInt(request.getParameter("page"));
+			if (request.getParameter("pageNum") != null) {
+				pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
 			}
 			if (request.getParameter("pageSize") != null) {
 				pageSize = Integer.parseInt(request.getParameter("pageSize"));
 			}
-			if (null != request.getParameter("senderAddressLike")) {
-				senderAddressLike = request.getParameter("senderAddressLike");
+			if (null != request.getParameter("queryLike")) {
+				queryLike = request.getParameter("queryLike");
 
-				senderAddressLike = new String(senderAddressLike.getBytes("ISO-8859-1"), "utf-8");
+				queryLike = new String(queryLike.getBytes("ISO-8859-1"), "utf-8");
 			}
 			// 分页查询
-//			PageData<Order> pdo = cs
+			PageData<Order> pdo = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
 
 			// 存储数据
 			request.setAttribute("pdo", pdo);
 
 			// 将模糊出查询的字符串 也转发回来
-			request.setAttribute("senderAddressLike", senderAddressLike);
+			request.setAttribute("queryLike", queryLike);
 			// 转发
 			request.getRequestDispatcher("mvc/collect.jsp").forward(request, response);
 		}

@@ -127,7 +127,7 @@
 					<div class="col-lg-9 main-chart">
 						<form class="navbar-form navbar-left">
 							<input type="text" id="searchAddress" class="form-control"
-								placeholder="Search..." value="${senderAddressLike==null?'':senderAddressLike}">
+								placeholder="Search..." value="${queryLike==null?'':queryLike}">
 							<input type="button" name="" id="btnSearch" value="搜索" />
 						</form>
 						<div class="table-responsive">
@@ -172,11 +172,11 @@
 								<ul class="pagination">
 									<li><a href="javascript:void(0)" id="prePage">上一页</a></li>
 									<c:forEach begin="1" end="${pds.totalPage}" var="index">
-										<c:if test="${index == pds.page}">
+										<c:if test="${index == pds.pageNum}">
 											<li class="active"><a href="javascript:void(0)"
 												class="pageNo">${index}</a></li>
 										</c:if>
-										<c:if test="${index != pds.page}">
+										<c:if test="${index != pds.pageNum}">
 											<li><a href="javascript:void(0)" class="pageNo">${index}</a></li>
 										</c:if>
 									</c:forEach>
@@ -299,14 +299,14 @@
 		src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
 	<script>
 	   $(function(){
-		   if(${pds.page>=pds.totalPage}){
+		   if(${pds.pageNum>=pds.totalPage}){
 			   $("#nextPage").css("color","gray");
 			   //pointer-events 不能点击了 ,没有测试所有的浏览器
 			   $("#nextPage").css("pointer-events","none");
 			   }
 		   
 		 //如果当前页 已经是第一页了
-		   if(${pds.page<=1}){
+		   if(${pds.pageNum<=1}){
 			     //上一页 样式设置
 		   $("#prePage").css("color","gray");
 		   $("#prePage").css("pointer-events","none");
@@ -315,18 +315,18 @@
 		   
 		   //分页页码点击
 		   $(".pageNo").click(function(){
-			   location.href = "CourierController?op=queryOrderByPage0=" + $(this).text()+"&senderAddressLike="+$("#searchAddress").val();
+			   location.href = "CourierController?op=queryOrderByPage0=" + $(this).text()+"&queryLike="+$("#searchLike").val();
 		   });
 		   
 		   //下一页
 		   $("#nextPage").click(function(){
 			   
-			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.page+1}+"&senderAddressLike="+$("#searchAddress").val();
+			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.pageNum+1}+"&queryLike="+$("#searchLike").val();
 		   });
 		   
 		   //上一页
 		   $("#prePage").click(function(){
-			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.page-1}+"&senderAddressLike="+$("#searchAddress").val();
+			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.pageNum-1}+"&queryLike="+$("#searchLike").val();
 		   });
 
 		   
@@ -334,8 +334,8 @@
 		   //处理模糊检索
  		   $('#btnSearch').click(function(){
 			  //得到用户输入的值
-			  var eNameLike = $("#searcheAddress").val();
-			  location.href = "CourierController?op=queryOrderByPage0&senderAddressLike="+senderAddressLike;
+			  var queryLike = $("#searchLike").val();
+			  location.href = "CourierController?op=queryOrderByPage0&queryLike="+queryLike;
 		   }); 
 	   });
 	</script>
