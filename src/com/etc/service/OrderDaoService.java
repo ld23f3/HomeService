@@ -1,5 +1,7 @@
 package com.etc.service;
 
+import java.util.List;
+
 import com.etc.entity.Order;
 
 public interface OrderDaoService {
@@ -17,4 +19,10 @@ public interface OrderDaoService {
 	 * @return
 	 */
 	public boolean updateOrder(Order order);
+	/**
+	 * 根据快递员的ID查询该快递员所有的订单
+	 * @param CourierId
+	 * @return
+	 */
+	public List<Order> queryAllOrderByCourierId(int CourierId);
 }
