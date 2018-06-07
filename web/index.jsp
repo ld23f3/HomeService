@@ -28,7 +28,7 @@
 
 		// 取得省數據資料
 		$.get("BranchController?op=query", function(data, status) {
-
+			console.log(data);
 			// 將返回的json轉換為數組
 			var array = JSON.parse(data);
 
@@ -115,7 +115,7 @@
 					$("#container").css("display", "block");
 
 					$(".showProvice").css("display", "none");
-					console.log("PROVICEID < 5=" + parseInt(PROVICEID) < 5);
+					clearOverlays(markers);
 					map.setCenter(results.detail.latLng);
 
 					console.log(PROVICENAME + "座標:" + results.detail.latLng);
