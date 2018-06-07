@@ -1,239 +1,250 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="Dashboard">
-		<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dashboard">
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-		<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>DASHGUM - FREE Bootstrap Admin Template</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css" rel="stylesheet">
-		<!--external css-->
-		<link href="${pageContext.request.contextPath}/Assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/css/zabuto_calendar.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/js/gritter/css/jquery.gritter.css" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/lineicons/style.css">
+<!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css"
+	rel="stylesheet">
+<!--external css-->
+<link
+	href="${pageContext.request.contextPath}/Assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/Assets/css/zabuto_calendar.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/Assets/js/gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/Assets/lineicons/style.css">
 
-		<!-- Custom styles for this template -->
-		<link href="${pageContext.request.contextPath}/Assets/css/style.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/Assets/css/style-responsive.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="${pageContext.request.contextPath}/Assets/css/style.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/Assets/css/style-responsive.css"
+	rel="stylesheet">
 
-		<script src="${pageContext.request.contextPath}/Assets/js/chart-master/Chart.js"></script>
+<script
+	src="${pageContext.request.contextPath}/Assets/js/chart-master/Chart.js"></script>
 
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<section id="container">
-			<!-- **********************************************************************************************************************************************************
+	<section id="container">
+		<!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
-			<!--header start-->
-			<header class="header black-bg">
+		<!--header start-->
+		<header class="header black-bg">
 
-				<div class="sidebar-toggle-box">
-					<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-				</div>
-				<!--logo start-->
-				<a href="index.html" class="logo"><b>宅急送后台管理</b></a>
-				<!--logo end-->
-				<div class="nav notify-row" id="top_menu">
-					<!--  notification start -->
-					
-				</div>
-				<div class="top-menu">
-					<ul class="nav pull-right top-menu">
-						<li>
-							<a class="logout" href="login.html">退出登陆</a>
-						</li>
-					</ul>
-				</div>
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars tooltips" data-placement="right"
+					data-original-title="Toggle Navigation"></div>
+			</div>
+			<!--logo start-->
+			<a href="index.html" class="logo"><b>宅急送后台管理</b></a>
+			<!--logo end-->
+			<div class="nav notify-row" id="top_menu">
+				<!--  notification start -->
 
-			</header>
-			<!--header end-->
-
-			<!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-			<!--sidebar start-->
-			<aside>
-				<div id="sidebar" class="nav-collapse ">
-					<!-- sidebar menu start-->
-					<ul class="sidebar-menu" id="nav-accordion">
-
-						<p class="centered">
-							<a href="profile.html"><img src="${pageContext.request.contextPath}/Assets/img/ui-sam.jpg" class="img-circle" width="60"></a>
-						</p>
-						<h5 class="centered">宅急送</h5>
-
-						<li class="mt">
-							<a class="hover" href="notcollect.html">
-								<i class="fa fa-dashboard"></i>
-								<span>未揽收</span>
-							</a>
-						</li>
-
-						<li class="sub-menu">
-							<a class="hover" href="collect.html">
-								<i class="fa fa-desktop"></i>
-								<span>已揽收</span>
-							</a>
-
-						</li>
-
-						<li class="sub-menu">
-							<a class="hover" href="notdispatch.html">
-								<i class="fa fa-cogs"></i>
-								<span>未派件</span>
-							</a>
-
-						</li>
-						
-						<li class="sub-menu">
-							<a class="hover" href="dispatch.html">
-								<i class="fa fa-desktop"></i>
-								<span>已派件</span>
-							</a>
-
-						</li>
-
-					</ul>
-					<!-- sidebar menu end-->
-				</div>
-			</aside>
-			<!--sidebar end-->
-			<div class="copyrights">Collect from
-				<a href="http://www.cssmoban.com/">网页模板</a>
+			</div>
+			<div class="top-menu">
+				<ul class="nav pull-right top-menu">
+					<li><a class="logout" href="login.html">退出登陆</a></li>
+				</ul>
 			</div>
 
-			<!-- **********************************************************************************************************************************************************
+		</header>
+		<!--header end-->
+
+		<!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+
+					<p class="centered">
+						<a href="profile.html"><img
+							src="${pageContext.request.contextPath}/Assets/img/ui-sam.jpg"
+							class="img-circle" width="60"></a>
+					</p>
+					<h5 class="centered">宅急送</h5>
+
+					<li class="mt"><a class="hover"
+						href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage0">
+							<i class="fa fa-dashboard"></i> <span>未揽收</span>
+					</a></li>
+
+					<li class="sub-menu"><a class="hover" href="collect.html">
+							<i class="fa fa-desktop"></i> <span>已揽收</span>
+					</a></li>
+
+					<li class="sub-menu"><a class="hover" href="notdispatch.html">
+							<i class="fa fa-cogs"></i> <span>未派件</span>
+					</a></li>
+
+					<li class="sub-menu"><a class="hover" href="dispatch.html">
+							<i class="fa fa-desktop"></i> <span>已派件</span>
+					</a></li>
+
+				</ul>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<div class="copyrights">
+			Collect from <a href="http://www.cssmoban.com/">网页模板</a>
+		</div>
+
+		<!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-			<!--main content start-->
-			<section id="main-content">
-				<section class="wrapper">
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
 
-					<div class="row">
-						<div class="col-lg-9 main-chart">
-							<form class="navbar-form navbar-left">
-								<input type="text" class="form-control">
-								<input type="button" name="" id="" value="搜索" />
-							</form>
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>订单编号</th>
-											<th>寄件人姓名</th>
-											<th>寄件人地址</th>
-											<th>寄件人电话</th>
-											<th>收件人姓名</th>
-											<th>收件人地址</th>
-											<th>收件人电话</th>
-											<th>寄件日期</th>
-											<th>状态</th>
-											<th>操作</th>
+				<div class="row">
+					<div class="col-lg-9 main-chart">
+						<form class="navbar-form navbar-left">
+							<input type="text" id="searchAddress" class="form-control"
+								placeholder="Search..." value="${senderAddressLike==null?'':senderAddressLike}">
+							<input type="button" name="" id="btnSearch" value="搜索" />
+						</form>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>订单编号</th>
+										<th>寄件人姓名</th>
+										<th>寄件人地址</th>
+										<th>寄件人电话</th>
+										<th>收件人姓名</th>
+										<th>收件人地址</th>
+										<th>收件人电话</th>
+										<th>寄件日期</th>
+										<th>状态</th>
+										<th>操作</th>
 
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>001</td>
-											<td>郑狗蛋</td>
-											<td>软件园二期观日路2</td>
-											<td>13159181053</td>
-											<td>郑伟杰</td>
-											<td>软件园二期观日路3</td>
-											<td>13159181053</td>
-											<td>2018-06-01</td>
-											<td>已揽收</td>
-											<td><input type="button" class="danger" name="" id="" value="修改" /></td>
-										</tr>
+									</tr>
+								</thead>
+								<tbody>
+									<c:if test="${pds.data!=null}">
+										<c:forEach items="${pds.data}" var="order">
+											<tr>
+												<td>${order.ORDERNO}</td>
+												<td>${order.SENDER}</td>
+												<td>${order.SENDERADDRESS}</td>
+												<td>${order.SENDERMOBILE}</td>
+												<td>${order.RECEIVER}</td>
+												<td>${order.RECEIVERADDRESS}</td>
+												<td>${order.RECEIVERMOBILE}</td>
+												<td>${order.ORDERDATE}</td>
+												<td>未揽件</td>
+												<td><a href="#">修改</a></td>
+											</tr>
+										</c:forEach>
+									</c:if>
+								</tbody>
 
-									</tbody>
-									
-								</table>
+							</table>
 
-								<div class="col-md-12 column text-center">
-									<ul class="pagination">
-										<li>
-											<a href="#">首页</a>
-										</li>
-										<li>
-											<a href="#">1</a>
-										</li>
-										<li>
-											<a href="#">2</a>
-										</li>
-										<li>
-											<a href="#">3</a>
-										</li>
-										<li>
-											<a href="#">4</a>
-										</li>
-										<li>
-											<a href="#">5</a>
-										</li>
-										<li>
-											<a href="#">下一页</a>
-										</li>
-									</ul>
-								</div>
-
+							<div class="col-md-12 column text-center">
+								<ul class="pagination">
+									<li><a href="javascript:void(0)" id="prePage">上一页</a></li>
+									<c:forEach begin="1" end="${pds.totalPage}" var="index">
+										<c:if test="${index == pds.page}">
+											<li class="active"><a href="javascript:void(0)"
+												class="pageNo">${index}</a></li>
+										</c:if>
+										<c:if test="${index != pds.page}">
+											<li><a href="javascript:void(0)" class="pageNo">${index}</a></li>
+										</c:if>
+									</c:forEach>
+									<li><a href="javascript:void(0)" id="nextPage">下一页</a></li>
+								</ul>
 							</div>
 
 						</div>
-						<!-- /col-lg-9 END SECTION MIDDLE -->
 
-						<!-- **********************************************************************************************************************************************************
+					</div>
+					<!-- /col-lg-9 END SECTION MIDDLE -->
+
+					<!-- **********************************************************************************************************************************************************
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->
 
-					</div>
-					<! --/row -->
-				</section>
+				</div>
+				<! --/row -->
 			</section>
-
-			<!--main content end-->
-			<!--footer start-->
-			
-			<!--footer end-->
 		</section>
 
-		<!-- js placed at the end of the document so the pages load faster -->
-		<script src="${pageContext.request.contextPath}/Assets/js/jquery.js"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/jquery-1.8.3.min.js"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/bootstrap.min.js"></script>
-		<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/jquery.scrollTo.min.js"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/jquery.sparkline.js"></script>
+		<!--main content end-->
+		<!--footer start-->
 
-		<!--common script for all pages-->
-		<script src="${pageContext.request.contextPath}/Assets/js/common-scripts.js"></script>
+		<!--footer end-->
+	</section>
 
-		<script type="text/javascript" src="${pageContext.request.contextPath}/Assets/js/gritter/js/jquery.gritter.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/Assets/js/gritter-conf.js"></script>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="${pageContext.request.contextPath}/Assets/js/jquery.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/jquery-1.8.3.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/jquery.scrollTo.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/jquery.sparkline.js"></script>
 
-		<!--script for this page-->
-		<script src="${pageContext.request.contextPath}/Assets/js/sparkline-chart.js"></script>
-		<script src="${pageContext.request.contextPath}/Assets/js/zabuto_calendar.js"></script>
+	<!--common script for all pages-->
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/common-scripts.js"></script>
 
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/Assets/js/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/Assets/js/gritter-conf.js"></script>
+
+	<!--script for this page-->
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/sparkline-chart.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/Assets/js/zabuto_calendar.js"></script>
+
+
+
+	<script type="application/javascript">
 		
-
-		<script type="application/javascript">
+		
+		
+		
+		
+		
+		
 			$(document).ready(function() {
 				$("#date-popover").popover({
 					html: true,
@@ -274,8 +285,61 @@
 				var to = $("#" + id).data("to");
 				console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
 			}
-		</script>
+		
+	
+	
+	
+	
+	
+	
+	</script>
 
-	</body>
+	<%--分页 --%>
+	<script type="text/javascript"
+		src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+	<script>
+	   $(function(){
+		   if(${pds.page>=pds.totalPage}){
+			   $("#nextPage").css("color","gray");
+			   //pointer-events 不能点击了 ,没有测试所有的浏览器
+			   $("#nextPage").css("pointer-events","none");
+			   }
+		   
+		 //如果当前页 已经是第一页了
+		   if(${pds.page<=1}){
+			     //上一页 样式设置
+		   $("#prePage").css("color","gray");
+		   $("#prePage").css("pointer-events","none");
+		   }
+		   
+		   
+		   //分页页码点击
+		   $(".pageNo").click(function(){
+			   location.href = "CourierController?op=queryOrderByPage0=" + $(this).text()+"&senderAddressLike="+$("#searchAddress").val();
+		   });
+		   
+		   //下一页
+		   $("#nextPage").click(function(){
+			   
+			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.page+1}+"&senderAddressLike="+$("#searchAddress").val();
+		   });
+		   
+		   //上一页
+		   $("#prePage").click(function(){
+			   location.href = "CourierController?op=queryOrderByPage0=" + ${pds.page-1}+"&senderAddressLike="+$("#searchAddress").val();
+		   });
+
+		   
+		   
+		   //处理模糊检索
+ 		   $('#btnSearch').click(function(){
+			  //得到用户输入的值
+			  var eNameLike = $("#searcheAddress").val();
+			  location.href = "CourierController?op=queryOrderByPage0&senderAddressLike="+senderAddressLike;
+		   }); 
+	   });
+	</script>
+
+</body>
 
 </html>
