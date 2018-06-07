@@ -57,35 +57,35 @@
 								<div class="space_hx">&nbsp;</div>
 
 								<div class="space_hx">&nbsp;</div>
-								<form action="" method="post">
+								<form action="FreightController?op=querycity" method="post">
 
 									<div class="space_hx">&nbsp;</div>
 									<ul class="xinxi">
 										<li>
-											收货城市
-											<input name="" type="text" class="wenben" placeholder="请输入城市名">
+											发货城市
+											<input id="bcity" name="bcity" type="text" class="wenben" placeholder="请输入城市名">
 										</li>
 										<li>
 											到达城市
-											<input name="" type="text" class="wenben" placeholder="请输入城市名">
+											<input id="ocity" name="ocity" type="text" class="wenben" placeholder="请输入城市名">
 										</li>
 										
 										<li>
 											货物數量
-											<input name="" type="text" class="wenben"> 件
+											<input id="number" name="number" type="number" class="wenben"> 件
 										</li>
 						
 										<li>
 											货物重量
-											<input name="" type="text" class="wenben"> 
+											<input id="weight" name="weight" type="text" class="wenben">kg 
 										</li>
 									<div class="space_hx">&nbsp;</div>
 
 									<div class="space_hx">&nbsp;</div>
 
 									<div class="xiadan_btn">
-										<a href="" class="sub">运费试算</a>
-							
+										<a href="FreightController?op=querycity" class="sub">运费试算</a>
+							           
 									</div>
 								</form>
 							</div>
