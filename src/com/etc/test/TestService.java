@@ -1,29 +1,43 @@
 package com.etc.test;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.SQLException;
 
-import com.etc.entity.Courier;
+import com.etc.dao.OrderDao;
+import com.etc.dao.impl.OrderDaoImpl;
+import com.etc.entity.Order;
 import com.etc.service.CourierService;
 import com.etc.service.impl.CourierServiceImpl;
+import com.etc.util.DBUtil;
 
 public class TestService {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
 		// 测试快递员类
 		CourierService cs = new CourierServiceImpl();
-		//测试登录
-		//System.out.println(cs.login("8801", "jlh12345"));
-		//测试查询所有快递员
-		//		List<Courier> list = cs.getAllCourier();
-//		for (Courier courier : list) {
-//			System.out.println(courier);
-//		}
-		//测试快递员修改密码
-		System.out.println(cs.updateAccountPwd("8801","123456", "jlh12345"));
 		// 新增快递员数据
-		// CourierService cs = new CourierServiceImpl();
-		// Courier courier = new Courier("在这个区域", "姜丽红", "jlh12345", "13800000000");
+		// Courier courier = new Courier(5050,"不给域", "蒋策", "1233456", "13800000000");
 		// System.out.println(cs.register(courier));
+		Connection conn = DBUtil.getConn();
+		OrderDao od = new OrderDaoImpl();
+		int orderNo = od.initializeOrderNo(conn);
+		// 20180001,'建辉',14,236,1525,'关日璐5号','15366245269','雷仞',14,240,1570,'角美镇龙田村','13123389565'
+		Order o = new Order(orderNo, "建辉", 14, 236, 1525, "关日璐9号", "15366245269", "雷仞", 14, 240, 1570, "角美镇龙田村",
+				"13123389565");
+		System.out.println(od.addOrder(conn, o));
+
+		conn.close();
+		// System.out.println(od.initializeOrderNo());
+		// 测试登录
+		// System.out.println(cs.login("8801", "jlh12345"));
+		// 测试查询所有快递员
+		// List<Courier> list = cs.getAllCourier();
+		// for (Courier courier : list) {
+		// System.out.println(courier);
+		// }
+		// 测试快递员修改密码
+		// System.out.println(cs.updateAccountPwd("8801", "123456", "jlh12345"));
+
 		// int id = 0;
 		// 新增省份信息
 		// 测试根据ID地域查询

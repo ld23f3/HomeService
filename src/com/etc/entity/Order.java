@@ -23,7 +23,41 @@ public class Order {
 	public Order() {
 		super();
 	}
-	
+	/**
+	 * 新增时调用的构造
+	 * @param oRDERNO 订单编号(20180000+序号,由initializeOrderNo自动生成)
+	 * @param sENDER 发件人
+	 * @param sENDERPROVINCEID	发件人省份
+	 * @param sENDERCITYID	发件人城市
+	 * @param sENDERCOUNTYID	发件人区县
+	 * @param sENDERADDRESS	发件人详细说明地址
+	 * @param sENDERMOBILE	发件人手机号
+	 * @param rECEIVER	收件人
+	 * @param rECEIVERPROVINCEID	收件人省份
+	 * @param rECEIVERCITYID	收件人城市
+	 * @param rECEIVERCOUNTYID	收件人区县
+	 * @param rECEIVERADDRESS	收件人详细地址
+	 * @param rECEIVERMOBILE	收件人信息
+	 */
+	public Order(int oRDERNO, String sENDER, int sENDERPROVINCEID, int sENDERCITYID, int sENDERCOUNTYID,
+			String sENDERADDRESS, String sENDERMOBILE, String rECEIVER, int rECEIVERPROVINCEID, int rECEIVERCITYID,
+			int rECEIVERCOUNTYID, String rECEIVERADDRESS, String rECEIVERMOBILE) {
+		super();
+		ORDERNO = oRDERNO;
+		SENDER = sENDER;
+		SENDERPROVINCEID = sENDERPROVINCEID;
+		SENDERCITYID = sENDERCITYID;
+		SENDERCOUNTYID = sENDERCOUNTYID;
+		SENDERADDRESS = sENDERADDRESS;
+		SENDERMOBILE = sENDERMOBILE;
+		RECEIVER = rECEIVER;
+		RECEIVERPROVINCEID = rECEIVERPROVINCEID;
+		RECEIVERCITYID = rECEIVERCITYID;
+		RECEIVERCOUNTYID = rECEIVERCOUNTYID;
+		RECEIVERADDRESS = rECEIVERADDRESS;
+		RECEIVERMOBILE = rECEIVERMOBILE;
+	}
+
 	/**
 	 * 完整构造
 	 * @param oRDERNO

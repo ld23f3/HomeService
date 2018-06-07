@@ -110,10 +110,14 @@ public class DBUtil {
 	/**
 	 * 通用的增删改操作(事务访问)
 	 * 
+	 * 2018年6月7日10:37:07
+	 * 修改人:lhc
+	 * 修改:修改了异常处理的返回值
+	 * 原因:需要操作多个表,我们需要对其返回值进行判断,然后才能做回滚操作
 	 * @param sql
 	 * @param conn
 	 * @param param
-	 * @return
+	 * @return 返回-1出异常大于等于0正常操作
 	 */
 	public static int execute(String sql, Connection conn, Object... param) {
 		PreparedStatement pstmt = null;
@@ -122,8 +126,9 @@ public class DBUtil {
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			//这里最好得到异常信息
-			e.printStackTrace();
-			throw new RuntimeException("数据库操作失败!", e);
+			//e.printStackTrace();
+			//throw new RuntimeException("数据库操作失败!", e);
+			return -1;
 		} finally {
 			close(null, pstmt, null);
 		}

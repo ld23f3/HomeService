@@ -17,15 +17,14 @@ public class CourierDaoImpl implements CourierDao {
 		return null;
 	}
 
-	
 	@Override
-	/**
-	 * 添加账号的时候需要用到事务访问业务(员工生成..)
-	 */
 	public boolean addCourier(Courier courier) {
-		String sql = "INSERT INTO COURIER VALUES(?,?,?,?,?,1,SYSDATE,SYSDATE)";
-		return DBUtil.execute(sql, courier.getCOURIERNO(),courier.getCOURIERREGION(), courier.getCOURIERNAME(), courier.getCOURIERPWD(),
-				courier.getCOURIERTEL()) > 0;
+		String sql = "DECLARE  \r\n" + "    v_name NUMBER;\r\n" + "   begin\r\n"
+				+ "select my_seq.nextval into v_name from dual;\r\n" + "v_name  := v_name  + ? * 10000;\r\n"
+				+ "INSERT INTO COURIER VALUES(v_name,?,?,?,?,0,SYSDATE,SYSDATE);\r\n" + "end;";
+		// String sql = "INSERT INTO COURIER VALUES(?,?,?,?,?,1,SYSDATE,SYSDATE)";
+		return DBUtil.execute(sql, courier.getCOURIERNO(), courier.getCOURIERREGION(), courier.getCOURIERNAME(),
+				courier.getCOURIERPWD(), courier.getCOURIERTEL()) > 0;
 	}
 
 	@Override

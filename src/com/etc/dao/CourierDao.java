@@ -7,6 +7,7 @@ import com.etc.entity.Courier;
 public interface CourierDao {
 	/**
 	 * 增加快递员信息
+	 * 员工生成编号的规则为区域编号*10000+序列号
 	 * @param courier 快递员信息
 	 * @return
 	 */

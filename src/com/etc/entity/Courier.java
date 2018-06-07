@@ -17,6 +17,9 @@ public class Courier {
 	/**
 	 * 建档需要的字段.新增的时候调用这个就行
 	 * 
+	 * 
+	 * @param cOURIERNO
+	 *            (这边提供一个区域编号即可.)员工编号。根据区域+序列号自动生成
 	 * @param cOURIERREGION
 	 *            区域(这个先放着.先暴力写入吧)
 	 * @param cOURIERNAME
@@ -26,8 +29,9 @@ public class Courier {
 	 * @param cOURIERTEL
 	 *            员工电话
 	 */
-	public Courier(String cOURIERREGION, String cOURIERNAME, String cOURIERPWD, String cOURIERTEL) {
+	public Courier(int cOURIERNO, String cOURIERREGION, String cOURIERNAME, String cOURIERPWD, String cOURIERTEL) {
 		super();
+		COURIERNO = cOURIERNO;
 		COURIERREGION = cOURIERREGION;
 		COURIERNAME = cOURIERNAME;
 		COURIERPWD = cOURIERPWD;

@@ -7,7 +7,9 @@ import com.etc.entity.Courier;
 public interface CourierService {
 	/**
 	 * 注册账号(注册界面需要验证快递员的工号和手机号)
-	 * 工号ID自动增长
+	 * 员工生成编号的规则为区域编号*10000+序列号
+	 * 由 PL/SQL做出提示
+	 * 需要提供一个
 	 * COURIER_SEQ.nextval  自动增长序列
 	 * @param courier
 	 * @return
@@ -15,7 +17,7 @@ public interface CourierService {
 	public boolean register(Courier courier);
 	/**
 	 * 登录
-	 * 内部会判断该员工的在职状态 0在职,1 离职
+	 * 页面登陆时需要判断在职状态 0在职,1 离职
 	 *  [ COURIERSTATUS]
 	 * @param account 账号(工号/手机号均可作为账号)
 	 * @param pwd 密码
