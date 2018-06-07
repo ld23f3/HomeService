@@ -43,12 +43,14 @@ public class BranchController extends HttpServlet {
 		response.setContentType("text/html ; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String op = request.getParameter("op");
-		
+
 		if("query".equals(op)) {
 			
 			List<Province> list = ps.queryAllProvince();		
 			Gson gson =new Gson();	
-			String jsonString = gson.toJson(list);			
+			String jsonString = gson.toJson(list);
+			
+			
 			out.println(jsonString);
 			out.close();
 		}
