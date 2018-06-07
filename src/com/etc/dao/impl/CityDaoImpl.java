@@ -7,6 +7,7 @@ import com.etc.entity.City;
 import com.etc.entity.Province;
 import com.etc.util.DBUtil;
 
+@SuppressWarnings("unchecked")
 public class CityDaoImpl implements CityDao {
 
 	@Override
@@ -15,14 +16,12 @@ public class CityDaoImpl implements CityDao {
 		return DBUtil.execute(sql, c.getCITYID(), c.getCITYNAME(), c.getPROVINCEID()) > 0;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<City> queryAllCity() {
 		String sql = "select * from city order by CITYID";
 		return (List<City>) DBUtil.select(sql, City.class);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public City queryCityById(int id) {
 		String sql = "select * FROM CITY where CITYID = ?";
@@ -30,6 +29,13 @@ public class CityDaoImpl implements CityDao {
 		if (list.size() > 0)
 			return list.get(0);
 		return null;
+	}
+
+	@Override
+	public List<City> queryCityByProvinceid(int id) {
+		String sql = "select * FROM CITY where PROVINCEID = ?";
+		List<City> list = (List<City>) DBUtil.select(sql, City.class, id);
+		return list;
 	}
 
 }

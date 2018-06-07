@@ -24,4 +24,9 @@ public class CityServiceImpl implements CityService {
 		return cd.queryCityById(id);
 	}
 
+	@Override
+	public List<City> queryCityByProvinceid(int id) {
+		return cd.queryCityByProvinceid(id);
+	}
+
 }

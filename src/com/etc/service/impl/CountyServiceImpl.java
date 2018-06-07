@@ -24,4 +24,9 @@ public class CountyServiceImpl implements CountyService {
 		return cd.queryCountyById(id);
 	}
 
+	@Override
+	public List<County> queryCountyByCityid(int id) {
+		return cd.queryCountyByCityid(id);
+	}
+
 }

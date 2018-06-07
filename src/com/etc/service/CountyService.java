@@ -20,6 +20,13 @@ public interface CountyService {
 	 */
 	public List<County> queryAllCounty();
 	/**
+	 * 根据城市ID查询所有区县
+	 * (已测)
+	 * @param id
+	 * @return
+	 */
+	public List<County> queryCountyByCityid(int id);
+	/**
 	 * 根据ID查询指定县/区
 	 * (已测)
 	 * @param id 

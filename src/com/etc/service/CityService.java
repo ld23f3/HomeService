@@ -20,6 +20,13 @@ public interface CityService {
 	 */
 	public List<City> queryAllCity();
 	/**
+	 * 根据省份ID查询所有的下属城市
+	 * (已测)
+	 * @param id
+	 * @return
+	 */
+	public List<City> queryCityByProvinceid(int id);
+	/**
 	 * 根据ID查询指定的城市
 	 * (已测)
 	 * @param id

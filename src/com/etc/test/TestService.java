@@ -1,32 +1,34 @@
 package com.etc.test;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-import com.etc.dao.OrderDao;
-import com.etc.dao.impl.OrderDaoImpl;
-import com.etc.entity.Order;
-import com.etc.service.CourierService;
-import com.etc.service.impl.CourierServiceImpl;
-import com.etc.util.DBUtil;
+import com.etc.entity.County;
+import com.etc.service.CityService;
+import com.etc.service.CountyService;
+import com.etc.service.impl.CityServiceImpl;
+import com.etc.service.impl.CountyServiceImpl;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
 
 		// 测试快递员类
-		CourierService cs = new CourierServiceImpl();
+		// CourierService cs = new CourierServiceImpl();
 		// 新增快递员数据
 		// Courier courier = new Courier(5050,"不给域", "蒋策", "1233456", "13800000000");
 		// System.out.println(cs.register(courier));
-		Connection conn = DBUtil.getConn();
-		OrderDao od = new OrderDaoImpl();
-		int orderNo = od.initializeOrderNo(conn);
-		// 20180001,'建辉',14,236,1525,'关日璐5号','15366245269','雷仞',14,240,1570,'角美镇龙田村','13123389565'
-		Order o = new Order(orderNo, "建辉", 14, 236, 1525, "关日璐9号", "15366245269", "雷仞", 14, 240, 1570, "角美镇龙田村",
-				"13123389565");
-		System.out.println(od.addOrder(conn, o));
 
-		conn.close();
+		// 测试添加订单
+		// Connection conn = DBUtil.getConn();
+		// OrderDao od = new OrderDaoImpl();
+		// int orderNo = od.initializeOrderNo(conn);
+		// //
+		// 20180001,'建辉',14,236,1525,'关日璐5号','15366245269','雷仞',14,240,1570,'角美镇龙田村','13123389565'
+		// Order o = new Order(orderNo, "建辉", 14, 236, 1525, "关日璐9号", "15366245269",
+		// "雷仞", 14, 240, 1570, "角美镇龙田村",
+		// "13123389565");
+		// System.out.println(od.addOrder(conn, o));
+		// conn.close();
 		// System.out.println(od.initializeOrderNo());
 		// 测试登录
 		// System.out.println(cs.login("8801", "jlh12345"));
@@ -42,8 +44,22 @@ public class TestService {
 		// 新增省份信息
 		// 测试根据ID地域查询
 		// ProvinceService ps = new ProvinceServiceImpl();
-		// CityService cs = new CityServiceImpl();
-		// CountyService cts = new CountyServiceImpl();
+		CityService cs = new CityServiceImpl();
+		CountyService cts = new CountyServiceImpl();
+
+		// **测试指定省份的下属城市
+
+		// List<City> list = cs.queryCityByProvinceid(1);
+		// for (City city : list) {
+		// System.out.println(city);
+		// }
+
+		// **测试指定城市的下属区县
+		// List<County> list = cts.queryCountyByCityid(460);
+		// for (County county : list) {
+		// System.out.println(county);
+		// }
+
 		// System.out.println( ps.searchProvinceById(1));
 		//
 		// System.out.println(cs.searchCityById(389));
