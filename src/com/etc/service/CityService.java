@@ -33,4 +33,12 @@ public interface CityService {
 	 * @return
 	 */
 	public City searchCityById(int id);
+	
+	/**
+	 * 根据市名查省ID
+	 * (已测)
+	 * @param name
+	 * @return
+	 */
+	public List<City> queryProvinceidbyCityName(String name);
 }

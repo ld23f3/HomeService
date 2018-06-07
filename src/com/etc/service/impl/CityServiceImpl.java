@@ -28,5 +28,10 @@ public class CityServiceImpl implements CityService {
 	public List<City> queryCityByProvinceid(int id) {
 		return cd.queryCityByProvinceid(id);
 	}
-
+	
+	@Override
+	public List<City> queryProvinceidbyCityName(String name) {
+		// TODO Auto-generated method stub
+		return cd.queryProvinceidbyCityName(name);
+	}
 }

@@ -28,4 +28,11 @@ public interface CityDao {
 	 * @return
 	 */
 	public City queryCityById(int id);
+	
+	/**
+	 * 根据市名查省ID
+	 * @param name
+	 * @return
+	 */
+	public List<City> queryProvinceidbyCityName(String name);
 }
