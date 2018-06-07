@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.etc.entity.Order;
+import com.etc.util.PageData;
 
 public interface OrderDaoService {
 	/**
@@ -35,5 +36,32 @@ public interface OrderDaoService {
 	 * @return
 	 */
 	public boolean updateOrder(Connection conn,Order order);
-	
+	/**
+	 * 分页模糊查询所有的订单
+	 * @param pageNum 查询返回第几页
+	 * @param pageSize 每页返回的长度
+	 * @param queryLike 模糊查询的关键字
+	 * @return
+	 */
+	public PageData<Order> getAllOrderByPage(int pageNum,int pageSize,String queryLike);
+	/**
+	 * 分页模糊查询指定快递员的所有订单
+	 * @param countyId 快递员的区域ID
+	 * @param pageNum 查询返回第几页 
+	 * @param pageSize 每页返回的长度
+	 * @param queryLike 模糊查询的关键字
+	 * @return
+	 */
+	public PageData<Order> getMyOrderByPage(int countyId, int pageNum,int pageSize,String queryLike);
+	/**
+	 * 分页模糊查询指定快递员的指定状态的订单
+	 * @param countyId 快递员的区域ID
+	 * @param pageNum 查询返回第几页 
+	 * @param pageSize 每页返回的长度
+	 * @param status 揽件/签收 状态
+	 * @param queryLike 模糊查询的关键字
+	 * @return
+	 */
+	public PageData<Order> getMyOrderByPage(int countyId, int pageNum,int pageSize,int status, String queryLike);
+
 }

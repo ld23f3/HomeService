@@ -1,26 +1,22 @@
 package com.etc.test;
 
 import java.sql.SQLException;
-import java.util.List;
 
-import com.etc.dao.impl.GoodsDaoImpl;
-import com.etc.entity.City;
-import com.etc.entity.County;
-import com.etc.entity.Province;
-import com.etc.service.CityService;
-import com.etc.service.CountyService;
-import com.etc.service.GoodsService;
-import com.etc.service.ProvinceService;
-import com.etc.service.impl.CityServiceImpl;
-import com.etc.service.impl.CountyServiceImpl;
-import com.etc.service.impl.GoodsServiceImpl;
-import com.etc.service.impl.ProvinceServiceImpl;
+import com.etc.dao.OrderDao;
+import com.etc.dao.impl.OrderDaoImpl;
+import com.etc.entity.Order;
+import com.etc.util.PageData;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
-		GoodsService gs = new GoodsServiceImpl();
-		System.out.println( gs.queryGoodsInfo(20180001));
-		
+//		GoodsService gs = new GoodsServiceImpl();
+//		System.out.println( gs.queryGoodsInfo(20180001));
+		OrderDao od = new OrderDaoImpl();
+		PageData<Order> pd =  od.queryOrderByCourieridPage(236, 1, 5, "½¨");
+		pd = od.queryOrderByCourieridPage(236, 1, 5, 0, "½¨");
+		System.out.println(pd);
+		System.out.println(pd.getTotalPage());
+		System.out.println(pd.getTotal());
 		// OrderDaoService ods = new OrderDaoServiceImpl();
 		// List<Order> list = ods.queryAllOrderByCourierId(0);
 		// for (Order order : list) {

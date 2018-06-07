@@ -4,7 +4,12 @@ import java.sql.Connection;
 
 import com.etc.entity.Order;
 import com.etc.util.PageData;
-
+/**
+ * 2018年6月7日17:54:09
+ * 需要的都好了
+ * @author Administrator
+ *
+ */
 public interface OrderDao {
 	/**
 	 * 初始化订单编号.20180000 + 序列号.美化订单显示 

@@ -14,6 +14,7 @@ import com.etc.util.PageData;
  * @author Administrator
  *
  */
+@SuppressWarnings("unchecked")
 public class OrderDaoImpl implements OrderDao {
 
 	@Override
@@ -53,21 +54,30 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public PageData<Order> queryAllOrderByPage(int pageNum, int pageSize, String queryLike) {
 		String sql = "select * from \"ORDER\" where  sender like ? or senderaddress like ? or sendermobile = ? or RECEIVER like ? or RECEIVERADDRESS like ? or  RECEIVERMOBILE = ?";
-
-		return DBUtil.getOraclePage(sql, pageNum, pageSize, Order.class, "%" + queryLike + "%", "%" + queryLike + "%", "%" + queryLike + "%", "%" + queryLike + "%", "%" + queryLike + "%", "%" + queryLike + "%");
+		String likeStr = "%" + queryLike + "%";
+		return DBUtil.getOraclePage(sql, pageNum, pageSize, Order.class, likeStr, likeStr, queryLike, likeStr, likeStr,
+				queryLike);
 	}
 
 	@Override
 	public PageData<Order> queryOrderByCourieridPage(int countyId, int pageNum, int pageSize, String queryLike) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from \"ORDER\" WHERE (sender like ? or\r\n" + "senderaddress like ? or \r\n"
+				+ "sendermobile = ? or\r\n" + "RECEIVER like ? or\r\n" + "RECEIVERADDRESS like ? or \r\n"
+				+ "RECEIVERMOBILE = ? ) and (SENDERCITYID  = ? or SENDERCOUNTYID = ? or RECEIVERCITYID = ? or RECEIVERCOUNTYID = ? )";
+		String likeStr = "%" + queryLike + "%";
+		return DBUtil.getOraclePage(sql, pageNum, pageSize, Order.class, likeStr, likeStr, queryLike, likeStr, likeStr,
+				queryLike,countyId,countyId,countyId,countyId);
 	}
 
 	@Override
 	public PageData<Order> queryOrderByCourieridPage(int countyId, int pageNum, int pageSize, int status,
 			String queryLike) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from \"ORDER\" WHERE (sender like ? or\r\n" + "senderaddress like ? or \r\n"
+				+ "sendermobile = ? or\r\n" + "RECEIVER like ? or\r\n" + "RECEIVERADDRESS like ? or \r\n"
+				+ "RECEIVERMOBILE = ? ) and (SENDERCITYID  = ? or SENDERCOUNTYID = ? or RECEIVERCITYID = ? or RECEIVERCOUNTYID = ? ) and ORDERSTATUS = ?";
+		String likeStr = "%" + queryLike + "%";
+		return DBUtil.getOraclePage(sql, pageNum, pageSize, Order.class, likeStr, likeStr, queryLike, likeStr, likeStr,
+				queryLike,countyId,countyId,countyId,countyId,status);
 	}
 
 }
