@@ -12,7 +12,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>快遞員派件管理</title>
 
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css"
