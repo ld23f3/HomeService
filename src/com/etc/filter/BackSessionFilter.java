@@ -48,7 +48,7 @@ public class BackSessionFilter implements Filter {
 			}else {
 				
 				// 如果用戶沒有登入
-				//response.sendRedirect("courierlogin.jsp");			
+				response.sendRedirect("courierlogin.jsp");			
 			}
 			
 		}
