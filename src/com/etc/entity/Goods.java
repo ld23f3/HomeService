@@ -16,7 +16,23 @@ public class Goods {
 	public Goods() {
 		super();
 	}
-	
+	/**
+	 * 新增时调用构造
+	 * @param gOODSTYPE 物品类型
+	 * @param gOODSWEIGHT 物品重量
+	 * @param gOODSNUMBER 物品数量
+	 * @param gOODSPRICE 物品价格
+	 * @param oRDERNO 订单编号
+	 */
+	public Goods(String gOODSTYPE, int gOODSWEIGHT, int gOODSNUMBER, double gOODSPRICE, int oRDERNO) {
+		super();
+		GOODSTYPE = gOODSTYPE;
+		GOODSWEIGHT = gOODSWEIGHT;
+		GOODSNUMBER = gOODSNUMBER;
+		GOODSPRICE = gOODSPRICE;
+		ORDERNO = oRDERNO;
+	}
+
 	/**
 	 * 完整构造
 	 * @param gOODSNO

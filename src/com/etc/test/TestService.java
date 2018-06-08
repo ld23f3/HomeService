@@ -3,20 +3,35 @@ package com.etc.test;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.etc.bean.dao.OrderBeanDao;
+import com.etc.bean.dao.impl.OrderBeanDaoImpl;
+import com.etc.bean.entity.OrderBean;
 import com.etc.dao.LogisticsDao;
 import com.etc.dao.impl.LogisticsDaoImpl;
 import com.etc.entity.Logistics;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
-		LogisticsDao ld = new LogisticsDaoImpl();
-		Logistics logistics = new Logistics(20180001, 14, 240, 1570, "龙体世");
-
-		System.out.println("新增:" + ld.addLogistics(logistics));
-		List<Logistics>list =  ld.queryLogisticsByOrderNo(20180001);
-		for (Logistics logistics2 : list) {
-			System.out.println(logistics2);
-		}
+		OrderBeanDao obd = new OrderBeanDaoImpl();
+		OrderBean ob = new OrderBean("發件人", 14, 240, 1570, "關日璐xx號", "15366245269", "收件人", 14, 240, 1570, "龍田村", "13962698569", "這個是一個東西", 5, 5, 33.333);
+		System.out.println( obd.addOrderBean(ob));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// LogisticsDao ld = new LogisticsDaoImpl();
+		// Logistics logistics = new Logistics(20180001, 14, 240, 1570, "龙体世");
+		//
+		// System.out.println("新增:" + ld.addLogistics(logistics));
+		// List<Logistics>list = ld.queryLogisticsByOrderNo(20180001);
+		// for (Logistics logistics2 : list) {
+		// System.out.println(logistics2);
+		// }
 		// GoodsService gs = new GoodsServiceImpl();
 		// System.out.println( gs.queryGoodsInfo(20180001));
 		// OrderDao od = new OrderDaoImpl();
