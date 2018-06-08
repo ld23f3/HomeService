@@ -49,15 +49,19 @@
 								<img src="Assets/images/icon6.jpg" alt="" />
 							</div>
 							<div class="space_hx">&nbsp;</div>
-							<form action="" method="post">
+							
+							<form id="model_form" action="${pageContext.request.contextPath}/UserController?op=addOrder" method="post">
 
 								<div class="space_hx">&nbsp;</div>
 								<ul class="xinxi">
-									<li>货物数量 <input name="" type="text" class="wenben">
+									<li>货物数量 <input name="GOODSNUMBER" type="text" class="wenben">
 										件
 									</li>
 
-									<li>货物类型 <input name="" type="text" class="wenben">
+									<li>货物类型 <input name="GOODSTYPE" type="text" class="wenben">
+									</li>
+									
+									<li>货物重量 <input name="GOODSWEIGHT" type="text" class="wenben">kg
 									</li>
 									<div class="space_hx">&nbsp;</div>
 
@@ -70,9 +74,9 @@
 											</div>
 											<ul>
 												<li><span> <i>&nbsp;</i> 寄件人
-												</span> <input name="" type="text"></li>
+												</span> <input name="SENDER" type="text" class="SENDER"></li>
 												<li><span> <i>&nbsp;</i> 手机
-												</span> <input name="" type="text"></li>
+												</span> <input name="SENDERMOBILE" type="text" class="SENDERMOBILE"></li>
 
 												<li><span> <i>&nbsp;</i> 发货地址
 												</span> <select name="ProvinceId"  class="ProvinceId">
@@ -93,7 +97,7 @@
 													<!--<option value="volvo">湖里區</option>
 														<option value="volvo">思明區</option> -->
 												</select> 
-												<input name="" type="text" placeholder="请输入详细地址"></li>
+												<input name="SENDERADDRESS" class="SENDERADDRESS" type="text" placeholder="请输入详细地址"></li>
 											</ul>
 										</div>
 										<!--发货人信息-->
@@ -105,12 +109,12 @@
 											</div>
 											<ul>
 												<li><span> <i>&nbsp;</i> 收货人
-												</span> <input name="" type="text"></li>
+												</span> <input name="RECEIVER" type="text" class="RECEIVER"></li>
 												<li><span> <i>&nbsp;</i> 手机
-												</span> <input name="" type="text"></li>
+												</span> <input name="RECEIVERMOBILE" type="text" class="RECEIVERMOBILE"></li>
 												<li><span> <i>&nbsp;</i> 收货地址
 												</span> 
-												<select name="ProvinceId"  class="ReciveProvinceId" id="ProvinceId">
+												<select name="ReciveProvinceId"  class="ReciveProvinceId" id="ReciveProvinceId">
 														<option>请选择省份</option>
 														<!-- <option value="volvo">福建省</option>
 														<option value="volvo">廣東省</option>
@@ -127,14 +131,14 @@
 														<option>请选择县/区</option>
 														<!-- <option value="volvo">湖里區</option>
 														<option value="volvo">思明區</option> -->
-												</select> <input name="" type="text" placeholder="请输入详细地址"></li>
+												</select> <input name="RECEIVERADDRESS" type="text" class="RECEIVERADDRESS" placeholder="请输入详细地址"></li>
 											</ul>
 										</div>
 										<!--收货人信息-->
 									</div>
 									<div class="space_hx">&nbsp;</div>
 									<div class="tiaok">
-										<span><input name="" type="checkbox" value="" checked>统一服务条款</span>
+										<span><input name="agreecheckbox" id="agreecheckbox" class="agreecheckbox" type="checkbox" value="" checked>统一服务条款</span>
 										<textarea name="" cols="" rows="">
 1.托运人应准确填写本单，如实告知承运人所托运货物的名称、性质、重量、数量、价值等必要情况；托与人应对所托运获取按照行业标准妥善包装，使其适合运输.
 2.托运人应准确填写本单，如实告知承运人所托运货物的名称、性质、重量、数量、价值等必要情况；托与人应对所托运获取按照行业标准妥善包装，使其适合运输.
@@ -145,7 +149,7 @@
 									<div class="space_hx">&nbsp;</div>
 									<div class="xiadan_btn">
 										<!-- <a href="" class="sub">立刻下单</a> <a href="" class="qux">取消</a> -->
-										<button type="submit" class="sub">提交</button>
+										<button type="button" class="sub">提交</button>
 										<button type="button" class="qux">取消</button>
 									</div>
 							</form>
@@ -178,7 +182,7 @@
 	//省遍历
 		$(function() {
 			//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryProvince",
+			$.get("${pageContext.request.contextPath}/UserController?op=queryProvince",
 					function(data, status) {
 						//把字符串变成数组用JSON.parse
 						array = JSON.parse(data);
@@ -204,7 +208,7 @@
 					$(".CityId").empty();
 					$(".CityId").append("<option>-请选择市级-</option>");
 					//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCity","ProvinceId="+$(".ProvinceId").val(),
+			$.get("${pageContext.request.contextPath}/UserController?op=queryCity","ProvinceId="+$(".ProvinceId").val(),
 					function(data, status) {
 					//清空 city的options列表 ,保留一个 请选择
 						
@@ -215,7 +219,7 @@
 						//index是数组的小标从0开始的 dept好像是data数组只是给他重新命名
 						$.each(array, function(index, City) {
 							
-							console.log(City.CITYID + "," + City.CITYNAME)
+							//console.log(City.CITYID + "," + City.CITYNAME)
 							$(".CityId").append(
 									"<option value="+City.CITYID+">"
 											+ City.CITYNAME + "</option>")
@@ -236,14 +240,16 @@
 				$(".CityId").change(function  () {
 					//alert($("#CityId").val());
 					//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCounty","CityId="+$(".CityId").val(),
+					$(".CountyId").empty();
+					$(".CountyId").append("<option>-请选择区级-</option>");
+			$.get("${pageContext.request.contextPath}/UserController?op=queryCounty","CityId="+$(".CityId").val(),
 					function(data, status) {
 						//把字符串变成数组用JSON.parse
 						array = JSON.parse(data);
 						//index是数组的小标从0开始的 dept好像是data数组只是给他重新命名
 						$.each(array, function(index, County) {
 							
-							console.log(County.COUNTYID + "," + County.COUNTYNAME)
+							//console.log(County.COUNTYID + "," + County.COUNTYNAME)
 							//append拼接
 							$(".CountyId").append(
 									"<option value="+County.COUNTYID+">"
@@ -268,7 +274,7 @@
 			//省遍历
 		$(function() {
 			//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryProvince",
+			$.get("${pageContext.request.contextPath}/UserController?op=queryProvince",
 					function(data, status) {
 						//把字符串变成数组用JSON.parse
 						array = JSON.parse(data);
@@ -294,7 +300,7 @@
 					$(".ReciveCityId").empty();
 					$(".ReciveCityId").append("<option>-请选择市级-</option>");
 					//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCity","ProvinceId="+$(".ReciveProvinceId").val(),
+			$.get("${pageContext.request.contextPath}/UserController?op=queryCity","ProvinceId="+$(".ReciveProvinceId").val(),
 					function(data, status) {
 					//清空 city的options列表 ,保留一个 请选择
 						
@@ -305,7 +311,7 @@
 						//index是数组的小标从0开始的 dept好像是data数组只是给他重新命名
 						$.each(array, function(index, City) {
 							
-							console.log(City.CITYID + "," + City.CITYNAME)
+							//console.log(City.CITYID + "," + City.CITYNAME)
 							$(".ReciveCityId").append(
 									"<option value="+City.CITYID+">"
 											+ City.CITYNAME + "</option>")
@@ -326,14 +332,16 @@
 				$(".ReciveCityId").change(function  () {
 					//alert($("#CityId").val());
 					//这里也需要绝对入经
-			$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCounty","CityId="+$(".ReciveCityId").val(),
+					$(".RecivCountyId").empty();
+					$(".RecivCountyId").append("<option>-请选择区级-</option>");
+			$.get("${pageContext.request.contextPath}/UserController?op=queryCounty","CityId="+$(".ReciveCityId").val(),
 					function(data, status) {
 						//把字符串变成数组用JSON.parse
 						array = JSON.parse(data);
 						//index是数组的小标从0开始的 dept好像是data数组只是给他重新命名
 						$.each(array, function(index, County) {
 							
-							console.log(County.COUNTYID + "," + County.COUNTYNAME)
+							//console.log(County.COUNTYID + "," + County.COUNTYNAME)
 							//append拼接
 							$(".RecivCountyId").append(
 									"<option value="+County.COUNTYID+">"
@@ -348,9 +356,60 @@
 			})
 			//结束当点击市时把参数传到区
 			
+			
+			
+			//buttun单击事件   通过params可以传表单里面的所有属性
+			
+		$(function  () {
+			
+				$(".sub").click(function  () {
+					
+					
+				var params = $("#model_form").serialize();
+					
+					//避免无法中文乱码
+				params = decodeURIComponent(params,true);
+				
+				//console.log("data= "+params);
+			  $.post("${pageContext.request.contextPath}/UserController?op=addOrder",params,
+					function(data, status) {
+				
+				//尝试获取status data
+				//console.log("status"+status+",data :"+data);
+				
+				if(data=="true")
+				{
+				 alert("下单成功~");
+				 
+				
+				   
+				location.href = "index.jsp";
+				  
+				}
+			     else
+				{
+				alert("下单失败,请填写完成信息");
+				//重新刷新页面
+				location.reload(); 
+				}
+				
+				
+						
+					})   
+						 
+					
+				})
+			})
+			
 		
 		
-		
+	//这段是判断服务是否勾上。如果没有勾上提交按不了
+	$("#agreecheckbox").click(function(){
+		//对象.prop("");  对象.attr("");
+		//console.log($(this).prop("checked"));
+		$(".sub").attr("disabled",!$(this).prop("checked"));
+	});
+	
 		
 		
 	</script>

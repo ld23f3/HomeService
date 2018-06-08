@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 	<head>
@@ -8,21 +10,21 @@
 		<meta name="author" content="Dashboard">
 		<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-		<title>DASHGUM - FREE Bootstrap Admin Template</title>
+		<title>宅急送后台管理</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="assets/css/bootstrap.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css" rel="stylesheet">
 		<!--external css-->
-		<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
-		<link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
-		<link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+		<link href="${pageContext.request.contextPath}/Assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/css/zabuto_calendar.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/js/gritter/css/jquery.gritter.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Assets/lineicons/style.css">
 
 		<!-- Custom styles for this template -->
-		<link href="assets/css/style.css" rel="stylesheet">
-		<link href="assets/css/style-responsive.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/Assets/css/style.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/Assets/css/style-responsive.css" rel="stylesheet">
 
-		<script src="assets/js/chart-master/Chart.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/chart-master/Chart.js"></script>
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -46,8 +48,7 @@
 				<!--logo start-->
 				<a href="index.html" class="logo"><b>宅急送后台管理</b></a>
 				<!--logo end-->
-				<div class="
-					 notify-row" id="top_menu">
+				<div class="nav notify-row" id="top_menu">
 					<!--  notification start -->
 					
 				</div>
@@ -72,7 +73,7 @@
 					<ul class="sidebar-menu" id="nav-accordion">
 
 						<p class="centered">
-							<a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a>
+							<a href="profile.html"><img src="${pageContext.request.contextPath}/Assets/img/ui-sam.jpg" class="img-circle" width="60"></a>
 						</p>
 						<h5 class="centered">宅急送</h5>
 
@@ -92,7 +93,7 @@
 						</li>
 
 						<li class="sub-menu">
-							<a class="" href="logistics.html">
+							<a class="hover" href="logistics.html">
 								<i class="fa fa-cogs"></i>
 								<span>物流管理</span>
 							</a>
@@ -125,27 +126,30 @@
 								<table class="table table-striped">
 									<thead>
 										<tr>
-											<th>快递员编号</th>
-											<th>所属区域</th>
-											<th>快递员姓名</th>
-											<th>快递员电话</th>
-											<th>快递员密码</th>
-											<th>是否在职</th>
-											<th>入职日期</th>
+											<th>订单编号</th>
+											<th>寄件人姓名</th>
+											<th>寄件人地址</th>
+											<th>寄件人电话</th>
+											<th>收件人姓名</th>
+											<th>收件人地址</th>
+											<th>收件人电话</th>
+											<th>寄件日期</th>
+											<th>签收日期</th>
 											<th>操作</th>
-											
 
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>001</td>
-											<td>厦门市思明区</td>
 											<td>郑狗蛋</td>
+											<td>软件园二期观日路2</td>
 											<td>13159181053</td>
-											<td>zxc16885</td>
-											<td>在职</td>
+											<td>郑伟杰</td>
+											<td>软件园二期观日路3</td>
+											<td>13159181053</td>
 											<td>2018-06-01</td>
+											<td>2018-06-04</td>
 											<td><input type="button" class="danger" name="" id="" value="修改" /></td>
 										</tr>
 
@@ -200,23 +204,23 @@
 		</section>
 
 		<!-- js placed at the end of the document so the pages load faster -->
-		<script src="assets/js/jquery.js"></script>
-		<script src="assets/js/jquery-1.8.3.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-		<script src="assets/js/jquery.scrollTo.min.js"></script>
-		<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-		<script src="assets/js/jquery.sparkline.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/jquery.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/jquery-1.8.3.min.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/bootstrap.min.js"></script>
+		<script class="include" type="text/javascript" src="${pageContext.request.contextPath}/Assets/js/jquery.dcjqaccordion.2.7.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/jquery.scrollTo.min.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/jquery.sparkline.js"></script>
 
 		<!--common script for all pages-->
-		<script src="assets/js/common-scripts.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/common-scripts.js"></script>
 
-		<script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-		<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/Assets/js/gritter/js/jquery.gritter.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/Assets/js/gritter-conf.js"></script>
 
 		<!--script for this page-->
-		<script src="assets/js/sparkline-chart.js"></script>
-		<script src="assets/js/zabuto_calendar.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/sparkline-chart.js"></script>
+		<script src="${pageContext.request.contextPath}/Assets/js/zabuto_calendar.js"></script>
 
 		
 
