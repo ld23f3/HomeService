@@ -129,6 +129,7 @@
 							<form class="navbar-form navbar-left">
 								<input type="text" class="form-control">
 								<input type="button" name="" id="" value="搜索" />
+								<h2>未派件清單</h2>
 							</form>
 							<div class="table-responsive">
 								<table class="table table-striped">

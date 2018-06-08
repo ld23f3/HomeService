@@ -143,6 +143,8 @@
 							<input type="text" id="searchAddress" class="form-control"
 								placeholder="Search..." value="${queryLike==null?'':queryLike}">
 							<input type="button" name="" id="btnSearch" value="搜索" />
+						<h2>已揽收清單</h2>
+						
 						</form>
 						<div class="table-responsive">
 							<table class="table table-striped">
