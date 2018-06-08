@@ -9,14 +9,14 @@ import com.etc.util.PageData;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
-//		GoodsService gs = new GoodsServiceImpl();
-//		System.out.println( gs.queryGoodsInfo(20180001));
-		OrderDao od = new OrderDaoImpl();
-		PageData<Order> pd =  od.queryOrderByCourieridPage(236, 1, 5, "建");
-		pd = od.queryOrderByCourieridPage(236, 1, 5, 0, "建");
-		System.out.println(pd);
-		System.out.println(pd.getTotalPage());
-		System.out.println(pd.getTotal());
+		// GoodsService gs = new GoodsServiceImpl();
+		// System.out.println( gs.queryGoodsInfo(20180001));
+		// OrderDao od = new OrderDaoImpl();
+		// PageData<Order> pd = od.queryOrderByCourieridPage(236, 1, 5, "建");
+		// pd = od.queryOrderByCourieridPage(236, 1, 5, 0, "建");
+		// System.out.println(pd);
+		// System.out.println(pd.getTotalPage());
+		// System.out.println(pd.getTotal());
 		// OrderDaoService ods = new OrderDaoServiceImpl();
 		// List<Order> list = ods.queryAllOrderByCourierId(0);
 		// for (Order order : list) {
@@ -58,15 +58,15 @@ public class TestService {
 		// CountyService cts = new CountyServiceImpl();
 		// **测试指定省份的下属城市
 
-//		 List<City> list = cs.queryCityByProvinceid(4);
-//		 for (City city : list) {
-//		 System.out.println(city);
-//		
-//		 County c = new County(city.getCITYID(),
-//		 city.getCITYNAME(), city.getPROVINCEID());
-//		 System.out.println(cts.addCounty(c));
-//		
-//		 }
+		// List<City> list = cs.queryCityByProvinceid(4);
+		// for (City city : list) {
+		// System.out.println(city);
+		//
+		// County c = new County(city.getCITYID(),
+		// city.getCITYNAME(), city.getPROVINCEID());
+		// System.out.println(cts.addCounty(c));
+		//
+		// }
 
 		// **测试指定城市的下属区县
 		// List<County> list = cts.queryCountyByCityid(460);
