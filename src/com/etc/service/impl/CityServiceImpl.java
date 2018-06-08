@@ -30,8 +30,12 @@ public class CityServiceImpl implements CityService {
 	}
 	
 	@Override
-	public List<City> queryProvinceidbyCityName(String name) {
-		// TODO Auto-generated method stub
-		return cd.queryProvinceidbyCityName(name);
+	public List<City> queryCityLikeCityName(String name) {
+		return cd.queryCityLikeCityName(name);
+	}
+
+	@Override
+	public City queryCityByCityName(String name) {
+		return cd.queryCityByCityName(name);
 	}
 }

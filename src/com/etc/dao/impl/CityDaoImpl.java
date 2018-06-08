@@ -36,12 +36,20 @@ public class CityDaoImpl implements CityDao {
 		List<City> list = (List<City>) DBUtil.select(sql, City.class, id);
 		return list;
 	}
-	
+
 	@Override
-	public List<City> queryProvinceidbyCityName(String name) {
-		// TODO Auto-generated method stub
-		String sql = "select PROVINCEID  FROM CITY where CITYNAME = ?";
+	public List<City> queryCityLikeCityName(String name) {
+		String sql = "select *  FROM CITY where CITYNAME like ?";
+		List<City> list = (List<City>) DBUtil.select(sql, City.class, "%" + name + "%");
+		return list;
+	}
+
+	@Override
+	public City queryCityByCityName(String name) {
+		String sql = "select *  FROM CITY where CITYNAME = ?";
 		List<City> list = (List<City>) DBUtil.select(sql, City.class, name);
+		if(list.size()>0)
+			return list.get(0);
 		return null;
 	}
 

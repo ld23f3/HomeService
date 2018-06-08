@@ -35,10 +35,15 @@ public interface CityService {
 	public City searchCityById(int id);
 	
 	/**
-	 * 根据市名查省ID
-	 * (已测)
+	 * 模糊匹配市名,得到所有匹配到的市以及省份ID信息
+	 * @param name
+	 * @return 所有模糊匹配到的城市信息
+	 */
+	public List<City> queryCityLikeCityName(String name);
+	/**
+	 * 精确匹配市名,得到该市及省份信息
 	 * @param name
 	 * @return
 	 */
-	public List<City> queryProvinceidbyCityName(String name);
+	public City queryCityByCityName(String name);
 }
