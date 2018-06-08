@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css"/>
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css"/>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -45,9 +48,9 @@
                 	<div class="space_hx">&nbsp;</div>
                 	<div class="web_mtop">
                     	<form action="" method="post">
-                        	<input name="" type="text" placeholder="请输入手机号码">
+                        	<input type="text" name="queryLike" id="queryLike" placeholder="请输入手机号码">
                             <input name="" type="text" placeholder="请输入验证码">
-                            <a href="">查询</a>
+                            <a id="btnSearch">查询</a>
                         </form>
                     </div>
                     <div class="space_hx">&nbsp;</div>
@@ -92,84 +95,74 @@
                         </div>-->
                         <div class="space_hx">&nbsp;</div>
                         <table class="wang" cellpadding="0" cellspacing="0">
+                        <thead>
                           <tr>
                             <th width="70" scope="col">订单编号</th>
-                            <th width="380" scope="col">收货地址</th>
-                            <th width="100" scope="col">收件人</th>                     
-                            <th width="450" scope="col">送货地址</th>
-                            <th width="130" scope="col">联系方式</th>
-                            <th width="130" scope="col">包裹件數</th>
-                            <th width="140" scope="col">狀態</th>
-                            <th width="140" scope="col">功能</th>
+                            <th width="70" scope="col">寄件人</th>
+                            <th width="70" scope="col">省</th>                     
+                            <th width="70" scope="col">市</th>
+                            <th width="70" scope="col">县</th>
+                            <th width="70" scope="col">地址</th>
+                            <th width="70" scope="col">手机</th>
+                            <th width="70" scope="col">收件人</th>
+                            <th width="70" scope="col">省</th>                     
+                            <th width="70" scope="col">市</th>
+                            <th width="70" scope="col">县</th>
+                            <th width="70" scope="col">地址</th>
+                            <th width="70" scope="col">手机</th>
+                            <th width="90" scope="col">下单日期</th>
+                            <th width="90" scope="col">订单状态</th>
                           </tr>
-                          <tr>
-                            <td>201800001</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>王小明</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>010-61733724</td>
-                            <td>2</td>
-                            <td><a href="">已取件</td>
-                            <td><button>取消訂單</button></td>
-                          </tr>
-                          <tr>
-                            <td>201800002</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>李一</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>010-61733724</td>
-                            <td>2</td>
-                            <td><a href="">已取件</a></td>
-                            <td><button>取消訂單</button></td>
-                          </tr>
-                          <tr>
-                            <td>201800003</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>張美麗</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>010-61733724</td>
-                            <td>4</td>
-                            <td><a href="">出發取件</a></td>
-                            <td><button>取消訂單</button></td>
-                          </tr>
-                          <tr>
-                            <td>201800004</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>徐進</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>010-61733724</td>
-                            <td>3</td>
-                            <td><a href="">发货</a></td>
-                            <td><button>取消訂單</button></td>
-                          </tr>
-                          <tr>
-                            <td>201800005</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>洪華億</td>
-                            <td>北京昌平区百善镇善缘嘉园北门</td>
-                            <td>010-61733724</td>
-                            <td>1</td>
-                            <td><a href="">发货</a><a href="">提货</a></td>
-                            <td><button>取消訂單</button></td>
-                          </tr>
+                          </thead>
+                          <tbody>
+						<c:if test="${order!=null}">
+								<c:forEach items="${order}" var="order">
+						
+						<tr>
+										
+										<td>${order.ORDERNO}</td>
+										<td>${order.SENDER}</td>
+										<td>${order.SENDERPROVINCEID}</td>
+										<td>${order.SENDERCITYID}</td>
+										<td>${order.SENDERCOUNTYID}</td>
+										<td>${order.SENDERADDRESS}</td>
+										<td>${order.SENDERMOBILE}</td>
+										<td>${order.RECEIVER}</td>
+										<td>${order.RECEIVERPROVINCEID}</td>
+										<td>${order.RECEIVERCITYID}</td>
+										<td>${order.RECEIVERCOUNTYID}</td>
+										<td>${order.RECEIVERADDRESS}</td>
+										<td>${order.RECEIVERMOBILE}</td>
+										<td>${order.ORDERDATE}</td>
+										<td>${order.ORDERSTATUS}</td>
+										<td>${order.ORDERRMODIFIED}</td>
+										
+										
+									</tr>
+								</c:forEach>	
+								</c:if>
+						</tbody>
+                         
                         </table>
                         <div class="space_hx">&nbsp;</div>
                         <!--分页导航-->
-                          <div class="pclady_page">
-                              <a class="prev" href="">上一页</a>
-                              <a href="">1</a>
-                              <a class="now">2</a>
-                              <a href="">3</a>
-                              <a href="">4</a>
-                              <a href="">5</a>
-                              <a href="">6</a>
-                              <a href="">7</a>
-                              <a href="">8</a>
-                              <a class="next" href="">下一页</a>
-                              <a target="_self" href="" class="viewAll">显示全部</a>
-                              <a target="_blank" href="">返回首页</a>
-                           </div>
-                          <!--分页导航--> 
+                          <div class="col-md-12 column text-center">
+						<ul class="pagination">
+							<li><a href="javascript:void(0)" id="prePage">上一页</a></li>
+							<%--注意这里   begin="1"  从1开始  end="${pd.totalPage}" 到几结束    var="index" 变量的值 --%>
+							<c:forEach begin="1" end="${pd.totalPage}" var="index">
+								<%--激活当前页码显示效果 --%>
+								<c:if test="${index == pd.page}">
+									<li class="active"><a href="javascript:void(0)"
+										class="pageNo">${index}</a></li>
+								</c:if>
+								<c:if test="${index != pd.page}">
+									<li><a href="javascript:void(0)" class="pageNo">${index}</a></li>
+								</c:if>
+							</c:forEach>
+							<li><a href="javascript:void(0)" id="nextPage">下一页</a></li>
+						</ul>
+					</div>
                     </div>
                 </div>	
               </div>
@@ -193,5 +186,57 @@
     </div>	
 </div>
 <!--底部-->
+<script type="text/javascript"
+		src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+	<script>
+	   $(function(){
+		   
+		   //如果当前页 已经是最后一页了
+		   if(${pd.page >= pd.totalPage})
+			   {
+			   //下一页 样式设置
+			   $("#nextPage").css("color","gray");
+			   //pointer-events 不能点击了
+			   $("#nextPage").css("pointer-events","none");
+			   }
+		   
+		 //如果当前页 已经是第一页了
+		   if(${pd.page <= 1})
+		   {
+			     //上一页 样式设置
+		   $("#prePage").css("color","gray");
+		   $("#prePage").css("pointer-events","none");
+		   }
+		   
+		   
+		   //分页页码点击
+		   $(".pageNo").click(function(){
+			   location.href = "QueryOrderController?op=queryOrderByPage&pageNum=" + $(this).text()+"&queryLike="+$("#queryLike").val();
+		   });
+		   
+		   //下一页
+		   $("#nextPage").click(function(){
+			   
+			   location.href = "QueryOrderController?op=queryOrderByPage&pageNum=" + ${pd.page+1}+"&queryLike="+$("#queryLike").val();
+		   });
+		   
+		   //上一页
+		   $("#prePage").click(function(){
+			   location.href = "QueryOrderController?op=queryOrderByPage&pageNum=" + ${pd.page-1}+"&queryLike="+$("#queryLike").val();
+		   });
+		   
+		   
+		   
+		   //处理模糊检索
+		   $("#btnSearch").click(function(){
+			   
+			   //得到用户输入在文本框中的值
+			   var queryLike = $("#queryLike").val();
+			   location.href = "QueryOrderController?op=queryOrderByPage&queryLike="+queryLike;
+			   
+		   });
+		   
+	   });
+	</script>
 </body>
 </html>
