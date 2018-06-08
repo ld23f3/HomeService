@@ -2,6 +2,7 @@ package com.etc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.etc.bean.dao.OrderBeanDao;
+import com.etc.bean.dao.impl.OrderBeanDaoImpl;
+import com.etc.bean.entity.OrderBean;
 import com.etc.entity.City;
 import com.etc.entity.County;
 import com.etc.entity.Province;
@@ -24,14 +28,18 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class ProvinceController
  */
-@WebServlet("/ProvinceController")
+@WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProvinceService ps = new ProvinceServiceImpl();
 
 	CityService cs = new CityServiceImpl();
+
+	CountyService cts = new CountyServiceImpl();
 	
-	CountyService cts=new CountyServiceImpl();
+	//添加订单
+	OrderBeanDao obd=new OrderBeanDaoImpl();
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -73,7 +81,7 @@ public class UserController extends HttpServlet {
 			Gson gson = new Gson();
 			String str = gson.toJson(list);
 			// 此时我们的str是一个字符串，讲字符串返回到页面
-			System.out.println("city:" + str);
+			//System.out.println("city:" + str);
 			// 响应
 			PrintWriter out = response.getWriter();
 			out.println(str);
@@ -82,18 +90,76 @@ public class UserController extends HttpServlet {
 		} else if ("queryCounty".equals(op)) {
 
 			int cityId = Integer.parseInt(request.getParameter("CityId"));
-			
-			List<County>list=cts.queryCountyByCityid(cityId);
-			
-			
+
+			List<County> list = cts.queryCountyByCityid(cityId);
+
 			Gson gson = new Gson();
 			String str = gson.toJson(list);
 			// 此时我们的str是一个字符串，讲字符串返回到页面
-			System.out.println("County:" + str);
+			//System.out.println("County:" + str);
 			// 响应
 			PrintWriter out = response.getWriter();
 			out.println(str);
 			out.close();
+
+		} else if ("addOrder".equals(op)) {
+			//货物数量
+			int GOODSNUMBER = Integer.parseInt(request.getParameter("GOODSNUMBER"));
+			//货物类型
+			String GOODSTYPE = request.getParameter("GOODSTYPE");
+			//货物重量
+			int GOODSWEIGHT=Integer.parseInt(request.getParameter("GOODSWEIGHT"));
+			//寄件人
+			String SENDER=request.getParameter("SENDER");
+			//寄件人手机
+			String SENDERMOBILE=request.getParameter("SENDERMOBILE");
+			//寄件省
+			int ProvinceId=Integer.parseInt(request.getParameter("ProvinceId"));
+			//寄件市
+			int CityId=Integer.parseInt(request.getParameter("CityId"));
+			//寄件区
+			int CountyId=Integer.parseInt(request.getParameter("CountyId"));
+			//寄件人详细地址
+			String SENDERADDRESS=request.getParameter("SENDERADDRESS");
+			//收件人
+			String RECEIVER=request.getParameter("RECEIVER");
+			//收件人电话
+			String RECEIVERMOBILE=request.getParameter("RECEIVERMOBILE");
+			//收件人省
+			int ReciveProvinceId=Integer.parseInt(request.getParameter("ReciveProvinceId"));
+			//收件人市
+			int ReciveCityId=Integer.parseInt(request.getParameter("ReciveCityId"));
+			//收件人区
+			int RecivCountyId=Integer.parseInt(request.getParameter("RecivCountyId"));
+			//收件人详细地址
+			String RECEIVERADDRESS=request.getParameter("RECEIVERADDRESS");
+		
+			//System.out.println("ReciveProvinceId="+request.getParameter("ReciveProvinceId"));
+			//System.out.println("RecivCountyId="+request.getParameter("RecivCountyId"));
+			
+			//System.out.println(GOODSNUMBER+","+GOODSTYPE);
+			//System.out.println(ReciveProvinceId+","+RecivCountyId+","+RecivCountyId+","+RECEIVERADDRESS);
+			 
+			
+			
+			OrderBean ob = new OrderBean(SENDER, ProvinceId, CityId, CountyId, SENDERADDRESS, SENDERMOBILE, RECEIVER, ReciveProvinceId, ReciveCityId, RecivCountyId, RECEIVERADDRESS, RECEIVERMOBILE, GOODSTYPE, GOODSWEIGHT, GOODSNUMBER, 10);
+			
+			
+			boolean order=obd.addOrderBean(ob);
+			
+			Gson gson = new Gson();
+			String str = gson.toJson(order);
+			// 此时我们的str是一个字符串，讲字符串返回到页面
+			//System.out.println("County:" + str);
+			// 响应
+			PrintWriter out = response.getWriter();
+			out.print(str);
+			out.close();
+			
+			
+			
+			
+			//request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		}
 	}
