@@ -12,7 +12,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>宅急送快遞員派件管理</title>
 
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css"
@@ -59,7 +59,7 @@
 					data-original-title="Toggle Navigation"></div>
 			</div>
 			<!--logo start-->
-			<a href="index.html" class="logo"><b>宅急送后台管理</b></a>
+			<a href="index.html" class="logo"><b>宅急送快遞員派件管理</b></a>
 			<!--logo end-->
 			<div class="nav notify-row" id="top_menu">
 				<!--  notification start -->
@@ -90,22 +90,36 @@
 					</p>
 					<h5 class="centered">宅急送</h5>
 
-					<li class="mt"><a class="hover"
-						href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage0">
-							<i class="fa fa-dashboard"></i> <span>未揽收</span>
-					</a></li>
+						<li class="mt">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notcollect.jsp">
+								<i class="fa fa-dashboard"></i>
+								<span>未揽收</span>
+							</a>
+						</li>
 
-					<li class="sub-menu"><a class="hover" href="collect.html">
-							<i class="fa fa-desktop"></i> <span>已揽收</span>
-					</a></li>
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/collect.jsp">
+								<i class="fa fa-desktop"></i>
+								<span>已揽收</span>
+							</a>
 
-					<li class="sub-menu"><a class="hover" href="notdispatch.html">
-							<i class="fa fa-cogs"></i> <span>未派件</span>
-					</a></li>
+						</li>
 
-					<li class="sub-menu"><a class="hover" href="dispatch.html">
-							<i class="fa fa-desktop"></i> <span>已派件</span>
-					</a></li>
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notdispatch.jsp">
+								<i class="fa fa-cogs"></i>
+								<span>未派件</span>
+							</a>
+
+						</li>
+						
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/dispatch.jsp">
+								<i class="fa fa-desktop"></i>
+								<span>已派件</span>
+							</a>
+
+						</li>
 
 				</ul>
 				<!-- sidebar menu end-->
@@ -129,6 +143,8 @@
 							<input type="text" id="searchAddress" class="form-control"
 								placeholder="Search..." value="${queryLike==null?'':queryLike}">
 							<input type="button" name="" id="btnSearch" value="搜索" />
+						<h2>已揽收清單</h2>
+						
 						</form>
 						<div class="table-responsive">
 							<table class="table table-striped">
