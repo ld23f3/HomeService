@@ -78,14 +78,14 @@
 						<h5 class="centered">宅急送</h5>
 
 						<li class="mt">
-							<a class="hover" href="notcollect.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notcollect.jsp">
 								<i class="fa fa-dashboard"></i>
 								<span>未揽收</span>
 							</a>
 						</li>
 
 						<li class="sub-menu">
-							<a class="hover" href="collect.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/collect.jsp">
 								<i class="fa fa-desktop"></i>
 								<span>已揽收</span>
 							</a>
@@ -93,21 +93,20 @@
 						</li>
 
 						<li class="sub-menu">
-							<a class="hover" href="notdispatch.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notdispatch.jsp">
 								<i class="fa fa-cogs"></i>
 								<span>未派件</span>
 							</a>
 
 						</li>
-
+						
 						<li class="sub-menu">
-							<a class="hover" href="dispatch.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/dispatch.jsp">
 								<i class="fa fa-desktop"></i>
 								<span>已派件</span>
 							</a>
 
 						</li>
-
 					</ul>
 					<!-- sidebar menu end-->
 				</div>

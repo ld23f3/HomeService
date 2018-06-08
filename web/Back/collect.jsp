@@ -90,22 +90,36 @@
 					</p>
 					<h5 class="centered">宅急送</h5>
 
-					<li class="mt"><a class="hover"
-						href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage0">
-							<i class="fa fa-dashboard"></i> <span>未揽收</span>
-					</a></li>
+						<li class="mt">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notcollect.jsp">
+								<i class="fa fa-dashboard"></i>
+								<span>未揽收</span>
+							</a>
+						</li>
 
-					<li class="sub-menu"><a class="hover" href="collect.html">
-							<i class="fa fa-desktop"></i> <span>已揽收</span>
-					</a></li>
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/collect.jsp">
+								<i class="fa fa-desktop"></i>
+								<span>已揽收</span>
+							</a>
 
-					<li class="sub-menu"><a class="hover" href="notdispatch.html">
-							<i class="fa fa-cogs"></i> <span>未派件</span>
-					</a></li>
+						</li>
 
-					<li class="sub-menu"><a class="hover" href="dispatch.html">
-							<i class="fa fa-desktop"></i> <span>已派件</span>
-					</a></li>
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/notdispatch.jsp">
+								<i class="fa fa-cogs"></i>
+								<span>未派件</span>
+							</a>
+
+						</li>
+						
+						<li class="sub-menu">
+							<a class="hover" href="${pageContext.request.contextPath}/Back/dispatch.jsp">
+								<i class="fa fa-desktop"></i>
+								<span>已派件</span>
+							</a>
+
+						</li>
 
 				</ul>
 				<!-- sidebar menu end-->
