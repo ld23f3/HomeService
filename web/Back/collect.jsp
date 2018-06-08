@@ -12,7 +12,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>快遞員派件管理</title>
+<title>宅急送快遞員派件管理</title>
 
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/Assets/css/bootstrap.css"
@@ -59,7 +59,7 @@
 					data-original-title="Toggle Navigation"></div>
 			</div>
 			<!--logo start-->
-			<a href="index.html" class="logo"><b>宅急送后台管理</b></a>
+			<a href="index.html" class="logo"><b>宅急送快遞員派件管理</b></a>
 			<!--logo end-->
 			<div class="nav notify-row" id="top_menu">
 				<!--  notification start -->
