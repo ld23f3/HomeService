@@ -1,14 +1,22 @@
 package com.etc.test;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import com.etc.dao.OrderDao;
-import com.etc.dao.impl.OrderDaoImpl;
-import com.etc.entity.Order;
-import com.etc.util.PageData;
+import com.etc.dao.LogisticsDao;
+import com.etc.dao.impl.LogisticsDaoImpl;
+import com.etc.entity.Logistics;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
+		LogisticsDao ld = new LogisticsDaoImpl();
+		Logistics logistics = new Logistics(20180001, 14, 240, 1570, "龙体世");
+
+		System.out.println("新增:" + ld.addLogistics(logistics));
+		List<Logistics>list =  ld.queryLogisticsByOrderNo(20180001);
+		for (Logistics logistics2 : list) {
+			System.out.println(logistics2);
+		}
 		// GoodsService gs = new GoodsServiceImpl();
 		// System.out.println( gs.queryGoodsInfo(20180001));
 		// OrderDao od = new OrderDaoImpl();
