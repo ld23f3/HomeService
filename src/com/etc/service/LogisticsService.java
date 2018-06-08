@@ -1,5 +1,28 @@
 package com.etc.service;
 
-public interface LogisticsService {
+import java.sql.Connection;
+import java.util.List;
 
+import com.etc.entity.Logistics;
+
+public interface LogisticsService {
+	/**
+	 * 新增一条物流信息
+	 * @param logistics
+	 * @return
+	 */
+	public boolean addLogistics(Logistics logistics);
+	/**
+	 * 新增一条物流信息(事务查询使用)
+	 * @param conn 
+	 * @param logistics
+	 * @return
+	 */
+	public boolean addLogistics(Connection conn, Logistics logistics);
+	/**
+	 * 根据订单编号查询物流信息
+	 * @return
+	 */
+	public List<Logistics> queryLogisticsByOrderNo(int orderNo);
+	
 }
