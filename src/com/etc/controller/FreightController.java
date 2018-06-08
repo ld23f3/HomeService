@@ -41,30 +41,38 @@ public class FreightController extends HttpServlet {
 		String op = request.getParameter("op");
 		double sum=0;
         if("querycity".equals(op)) {
-        	String cat = request.getParameter("bcity");
-        	String dog = request.getParameter("ocity");
-        	int number=Integer.parseInt(request.getParameter("number"));
+        	
+        	String cat = request.getParameter("ProvinceSelect");
+        	String dog = request.getParameter("ProvinceSelect_");
+        	//int count=Integer.parseInt(request.getParameter("number"));
         	double weight=Double.parseDouble(request.getParameter("weight"));
-        	List<City>list1= cs.queryProvinceidbyCityName(cat);
-        	List<City>list2= cs.queryProvinceidbyCityName(dog);
-        if(list1.get(0)==list2.get(0)) {
+        	//List<City>list1= cs.queryCityLikeCityName(cat);
+        	//List<City>list2= cs.queryCityLikeCityName(dog);
+        	
+        if(cat.equals(dog)) {
+        	sum=8.0;
         	if(weight>5) {
-        		sum=sum*(8+2);
+        		
+        		// 省內大於5公斤 每公斤加2元
+        		double weightCount = weight-5.0;
+        		sum=sum+(weightCount*2);
         	}else if(weight<=5) {
-        		sum=sum*8;
+        		sum=8.0;
         	}
         }else {
+        	// 省外起步12元
+        	sum=12.0;
         	if(weight>5) {
-        		sum=sum*(12+2.5);
+        		// 省外大於5公斤  每公斤加2.5元
+        		double weightCount = weight-5.0;
+        		sum=sum+(weightCount*2.5);
         	}else if(weight<=5) {
-        		sum=sum*12;
+        		sum=12;
         	}
         	
         }
-        out.println("<script>alert('运费大约是');location.href='count.jsp'</script>"+sum);
-        
-        
-        
+        out.println(sum);
+             
         
         }
 		
