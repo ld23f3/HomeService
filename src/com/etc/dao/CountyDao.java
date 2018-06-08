@@ -28,5 +28,16 @@ public interface CountyDao {
 	 * @return
 	 */
 	public County queryCountyById(int id);
-	
+	/**
+	 * 模糊匹配区县名称.得到所有匹配到的县以及上级城市ID信息
+	 * @param name
+	 * @return
+	 */
+	public List<County> queryCountyLikeCountyName(String name);
+	/**
+	 * 精确匹配区县名称.得到该县以及上级城市ID信息
+	 * @param name
+	 * @return
+	 */
+	public County queryCountyByCountyName(String name);
 }

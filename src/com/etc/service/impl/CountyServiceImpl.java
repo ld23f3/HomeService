@@ -29,4 +29,14 @@ public class CountyServiceImpl implements CountyService {
 		return cd.queryCountyByCityid(id);
 	}
 
+	@Override
+	public List<County> queryCountyLikeCountyName(String name) {
+		return cd.queryCountyLikeCountyName(name);
+	}
+
+	@Override
+	public County queryCountyByCountyName(String name) {
+		return cd.queryCountyByCountyName(name);
+	}
+
 }

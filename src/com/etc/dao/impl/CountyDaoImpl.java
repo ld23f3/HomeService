@@ -37,4 +37,20 @@ public class CountyDaoImpl implements CountyDao {
 		return list;
 	}
 
+	@Override
+	public List<County> queryCountyLikeCountyName(String name) {
+		String sql = "select *  FROM COUNTY where COUNTYNAME like ?";
+		List<County> list = (List<County>) DBUtil.select(sql, County.class, name);
+		return list;
+	}
+
+	@Override
+	public County queryCountyByCountyName(String name) {
+		String sql = "select *  FROM COUNTY where COUNTYNAME = ?";
+		List<County> list = (List<County>) DBUtil.select(sql, County.class, name);
+		if(list.size()>0)
+			return list.get(0);
+		return null;
+	}
+
 }
