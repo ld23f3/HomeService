@@ -173,7 +173,7 @@
 	//省遍历
 	$(function() {
 		//这里也需要绝对入经
-		$.get("${pageContext.request.contextPath}/ProvinceController?op=queryProvince",
+		$.get("${pageContext.request.contextPath}/UserController?op=queryProvince",
 				function(data, status) {
 					//把字符串变成数组用JSON.parse
 					array = JSON.parse(data);
@@ -196,7 +196,7 @@
 					$("#CitySelect").empty();
 					$("#CitySelect").append("<option>-请选择市级-</option>");
 					//这里也需要绝对入经
-					$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCity","ProvinceId="+$("#ProvinceSelect").val(),
+					$.get("${pageContext.request.contextPath}/UserController?op=queryCity","ProvinceId="+$("#ProvinceSelect").val(),
 					function(data, status) {
 					//清空 city的options列表 ,保留一个 请选择
 						
@@ -221,7 +221,7 @@
 		//省遍历
 	$(function() {
 		//这里也需要绝对入经
-		$.get("${pageContext.request.contextPath}/ProvinceController?op=queryProvince",
+		$.get("${pageContext.request.contextPath}/UserController?op=queryProvince",
 				function(data, status) {
 					//把字符串变成数组用JSON.parse
 					array = JSON.parse(data);
@@ -244,7 +244,7 @@
 					$("#CitySelect_").empty();
 					$("#CitySelect_").append("<option>-请选择市级-</option>");
 					//这里也需要绝对入经
-					$.get("${pageContext.request.contextPath}/ProvinceController?op=queryCity","ProvinceId="+$("#ProvinceSelect_").val(),
+					$.get("${pageContext.request.contextPath}/UserController?op=queryCity","ProvinceId="+$("#ProvinceSelect_").val(),
 					function(data, status) {
 					//清空 city的options列表 ,保留一个 请选择
 						
