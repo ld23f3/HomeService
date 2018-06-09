@@ -144,11 +144,11 @@
 										<c:forEach items="${logistics}" var="log">
 										
 											<tr>
-												<td>${log.ORDERNO}</td>
-												<td>${log.PROVINCEID}</td>
-												<td>${log.CITYID}</td>
-												<td>${log.COUNTYID}</td>
-												<td>${log.MODIFIED}</td>
+													<td>${log.ORDERNO}</td>
+													<td>${log.PROVINCEID}</td>
+													<td>${log.CITYID}</td>
+													<td>${log.COUNTYID}</td>
+													<td>33</td>
 												
 
 											</tr>

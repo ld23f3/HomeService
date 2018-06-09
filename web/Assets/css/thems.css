@@ -1,4 +1,4 @@
-/*承运商申请*/
+/*鎵胯繍鍟嗙敵璇�*/
 .main_top{
 	width:905px;
 	height:77px;
@@ -107,8 +107,8 @@
 	color:#333;
 	margin:0px auto;
 }
-/*承运商申请*/
-/*订单中心*/
+/*鎵胯繍鍟嗙敵璇�*/
+/*璁㈠崟涓績*/
 .order{
 	width:940px;
 	margin:0px auto;
@@ -293,8 +293,8 @@
 .order_r .news_mine li a:hover{
 	color:#0670B9;
 }
-/*订单中心*/
-/*个人资料*/
+/*璁㈠崟涓績*/
+/*涓汉璧勬枡*/
 .person{
 	width:940px;
 	margin:0px auto;
@@ -401,8 +401,8 @@
 	margin-top:10px;
 	margin-left:200px;
 }
-/*个人资料*/ 
-/*会员注册*/
+/*涓汉璧勬枡*/ 
+/*浼氬憳娉ㄥ唽*/
 .login_reg{
 	width:920px;
 	margin:0px auto;
@@ -549,8 +549,8 @@
 .f_main ul li.title span{
 	margin-left:10px;
 }
-/*会员注册*/
-/*关于我们*/
+/*浼氬憳娉ㄥ唽*/
+/*鍏充簬鎴戜滑*/
 .page{
 	width:960px;
 	margin:0px auto;
@@ -574,8 +574,8 @@
 	text-align:left;
 	overflow-x:hidden;
 }
-/*关于我们*/
-/*网上下单*/
+/*鍏充簬鎴戜滑*/
+/*缃戜笂涓嬪崟*/
 .book{
 	width:960px;
 	margin:0px auto;
@@ -588,7 +588,7 @@
 .tabBox .tabNav {
 	margin: 0px;
 	padding:0px;
-	width: 936px;
+	width: 915px;
 	list-style:none;
 	text-align:left;
 	height:36px;
@@ -917,8 +917,8 @@
 .book_m .xiadan_btn .qux{
 	background:url(../images/icon8.jpg) no-repeat;
 }
-/*网上下单*/
-/*网店查询*/
+/*缃戜笂涓嬪崟*/
+/*缃戝簵鏌ヨ*/
 .web_m{
 	width:936px;
 	margin:0px auto;
@@ -1045,15 +1045,15 @@
     padding: 0 10px;
 	border:1px solid #0670B9;
 }
-/*网点查询*/
-/*货物追踪*/
+/*缃戠偣鏌ヨ*/
+/*璐х墿杩借釜*/
 .follow_m{
 	width:936px;
 	margin:0px auto;
 	margin-top:10px;
 }
 .follow_m .follow_mtop{
-	width:936px;
+	width:915px;
 	height:80px;
 	background:#DFDDDE;
 	position:relative;
@@ -1110,8 +1110,8 @@
 .follow_main ul li.last{
 	color:#0670B9;
 }
-/*货物追踪*/
-/*新闻列表*/
+/*璐х墿杩借釜*/
+/*鏂伴椈鍒楄〃*/
 .person_rmain .new_list{
 	width:676px;
 	margin-left:10px;
@@ -1148,7 +1148,7 @@
 	margin-top:10px;
 	margin-bottom:10px;
 }
-/*新闻列表*/
+/*鏂伴椈鍒楄〃*/
 
 
 
