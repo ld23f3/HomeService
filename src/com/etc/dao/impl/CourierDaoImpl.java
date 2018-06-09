@@ -5,6 +5,7 @@ import java.util.List;
 import com.etc.dao.CourierDao;
 import com.etc.entity.Courier;
 import com.etc.util.DBUtil;
+import com.etc.util.PageData;
 
 @SuppressWarnings("unchecked")
 public class CourierDaoImpl implements CourierDao {
@@ -38,6 +39,17 @@ public class CourierDaoImpl implements CourierDao {
 	public List<Courier> queryAllCourier() {
 		String sql = "select * FROM courier";
 		return (List<Courier>) DBUtil.select(sql, Courier.class);
+	}
+
+	public PageData<Courier> queryAllCourierByPage(int pageNum, int pageSize) {
+		String sql = "select * FROM courier";
+		return DBUtil.getOraclePage(sql, pageNum, pageSize, Courier.class);
+	}
+
+	@Override
+	public PageData<Courier> queryAllCourierByPageLike(int pageNum, int pageSize, String like) {
+		String sql = "select * FROM courier where COURIERNAME like ? or COURIERREGION like ?";
+		return DBUtil.getOraclePage(sql, pageNum, pageSize, Courier.class, "%" + like + "%", "%" + like + "%");
 	}
 
 }

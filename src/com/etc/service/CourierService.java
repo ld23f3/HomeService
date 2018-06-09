@@ -3,6 +3,7 @@ package com.etc.service;
 import java.util.List;
 
 import com.etc.entity.Courier;
+import com.etc.util.PageData;
 
 public interface CourierService {
 	/**
@@ -37,4 +38,10 @@ public interface CourierService {
 	 * @return
 	 */
 	public List<Courier> getAllCourier();
+	/**
+	 * 分页模糊查询所有的快递员.
+	 * 模糊匹配员工姓名以及所在区域
+	 * @return
+	 */
+	public PageData<Courier> getAllCourierByPageLike(int pageNum,int pageSize,String like);
 }	

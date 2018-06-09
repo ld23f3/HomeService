@@ -6,6 +6,7 @@ import com.etc.dao.CourierDao;
 import com.etc.dao.impl.CourierDaoImpl;
 import com.etc.entity.Courier;
 import com.etc.service.CourierService;
+import com.etc.util.PageData;
 
 public class CourierServiceImpl implements CourierService {
 	CourierDao cd = new CourierDaoImpl();
@@ -30,6 +31,11 @@ public class CourierServiceImpl implements CourierService {
 	public List<Courier> getAllCourier() {
 		return cd.queryAllCourier();
 	}
+
+	@Override
+	public PageData<Courier> getAllCourierByPageLike(int pageNum, int pageSize, String like) {
+		return cd.queryAllCourierByPageLike(pageNum, pageSize, like);
+	}	
 	
 
 }

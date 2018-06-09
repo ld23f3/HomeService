@@ -3,6 +3,7 @@ package com.etc.dao;
 import java.util.List;
 
 import com.etc.entity.Courier;
+import com.etc.util.PageData;
 
 public interface CourierDao {
 	/**
@@ -31,5 +32,10 @@ public interface CourierDao {
 	 * @return
 	 */
 	public List<Courier> queryAllCourier();
-	
+	/**
+	 * 分页模糊查询所有的快递员.
+	 * 模糊匹配员工姓名以及所在区域
+	 * @return
+	 */
+	public PageData<Courier> queryAllCourierByPageLike(int pageNum,int pageSize,String like);
 }
