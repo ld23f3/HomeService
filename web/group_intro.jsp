@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css" />
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 <script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 $(function(){

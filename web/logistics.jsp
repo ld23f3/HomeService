@@ -25,7 +25,7 @@
 		<!-- Custom styles for this template -->
 		<link href="Assets/css/style.css" rel="stylesheet">
 		<link href="Assets/css/style-responsive.css" rel="stylesheet">
-
+		<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 		<script src="Assets/js/chart-master/Chart.js"></script>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

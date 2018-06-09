@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css"/>
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css"/>
-
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <div class="content">
         	<img src="Assets/upload/about.jpg" alt=""/>
             <p>
-            	宅急送是国家“AAAAA”级物流企业，主营国运输业务。截止2018年5月末，公司已开设直营网点 4,300内公路多家，服务网络遍及全国，自有营运车辆8,700余台，全国转运中心总面积超过92万平方米公司始终以客户为中心随时候命、持续创新，始终坚持自建营业网点、自购进口车辆、搭建最优线路，优化运力成本，为客户提供快速高效、便捷及时、安全可靠的服务体验，助力客户创造最大的价值。
+            	宅急送是一家让客户寄收快件都十分便捷的公司。如果客户由于工作忙碌而没时间寄快件，我们有针对这方面的上门取件服务，方便快捷不花费客户太多的时间。对于偏远地区的客户，我们也有专门的接收点，不影响配送速度的情况下，完整的送到客户手中。对客户提出的需求进行一一分析，解决客户的问题，完善配送管理机制。
 
             </p>
         </div>

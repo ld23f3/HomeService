@@ -103,8 +103,12 @@ public class UserController extends HttpServlet {
 			out.close();
 
 		} else if ("addOrder".equals(op)) {
+			//区
+			int CountyId=0;
+			int RecivCountyId=0;
+			
 			//货物数量
-			int GOODSNUMBER = Integer.parseInt(request.getParameter("GOODSNUMBER"));
+			 int GOODSNUMBER = Integer.parseInt(request.getParameter("GOODSNUMBER"));
 			//货物类型
 			String GOODSTYPE = request.getParameter("GOODSTYPE");
 			//货物重量
@@ -118,7 +122,9 @@ public class UserController extends HttpServlet {
 			//寄件市
 			int CityId=Integer.parseInt(request.getParameter("CityId"));
 			//寄件区
-			int CountyId=Integer.parseInt(request.getParameter("CountyId"));
+			if(null==request.getParameter("CountyId")) {
+			 CountyId=Integer.parseInt(request.getParameter("CountyId"));
+			}
 			//寄件人详细地址
 			String SENDERADDRESS=request.getParameter("SENDERADDRESS");
 			//收件人
@@ -130,7 +136,9 @@ public class UserController extends HttpServlet {
 			//收件人市
 			int ReciveCityId=Integer.parseInt(request.getParameter("ReciveCityId"));
 			//收件人区
-			int RecivCountyId=Integer.parseInt(request.getParameter("RecivCountyId"));
+			if(null==request.getParameter("RecivCountyId")) {
+			 RecivCountyId=Integer.parseInt(request.getParameter("RecivCountyId"));
+			}
 			//收件人详细地址
 			String RECEIVERADDRESS=request.getParameter("RECEIVERADDRESS");
 		

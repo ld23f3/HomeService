@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css" />
 <script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 
 <script>
 	$(function() {
@@ -30,11 +31,11 @@
 						"display", "block");
 				
 				$("#price").text(data);
-				$("#senderCity").text($("#CitySelect").val());			
-				$("#receiverCity").text($("#CitySelect_").val());
+				$("#senderCity").text($("#CitySelect option:selected").text());			
+				$("#receiverCity").text($("#CitySelect_ option:selected").text());
 				$("#totalWeight").text($("#weight").val());
 				$("#price").text(data);
-				
+
 				console.log("data:"+data);
 			});
 		});
