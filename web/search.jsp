@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css" />
-<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
@@ -88,15 +87,15 @@
 
 													<td>${order.ORDERNO}</td>
 													<td>${order.SENDER}</td>
-													<td>${order.SENDERPROVINCEID}</td>
-													<td>${order.SENDERCITYID}</td>
-													<td>${order.SENDERCOUNTYID}</td>
+													<td>${order.SENDERPROVINCENAME}</td>
+													<td>${order.SENDERCITYNAME}</td>
+													<td>${order.SENDERCOUNTYNAME}</td>
 													<td>${order.SENDERADDRESS}</td>
 													<td>${order.SENDERMOBILE}</td>
 													<td>${order.RECEIVER}</td>
-													<td>${order.RECEIVERPROVINCEID}</td>
-													<td>${order.RECEIVERCITYID}</td>
-													<td>${order.RECEIVERCOUNTYID}</td>
+													<td>${order.RECEIVERPROVINCENAME}</td>
+													<td>${order.RECEIVERCITYNAME}</td>
+													<td>${order.RECEIVERCOUNTYNAME}</td>
 													<td>${order.RECEIVERADDRESS}</td>
 													<td>${order.RECEIVERMOBILE}</td>
 													<td>${order.ORDERDATE}</td>
@@ -124,9 +123,8 @@
 											<a href="javascript:void(0)" class="pageNo">${index}</a>
 										</c:if>
 									</c:forEach>
-									<a href="javascript:void(0)" id="nextPage">下一页</a> <a
-										target="_self" href="" class="viewAll" hidden>显示全部</a> <a
-										target="_blank" href="">返回首页</a>
+									<a href="javascript:void(0)" id="nextPage">下一页</a>
+									 <a  href="javascript:void(0)" target="_blank" id="return">返回首页</a>
 								</div>
 								<%-- <div class="col-md-12 column text-center">
 						<ul class="pagination">
@@ -216,6 +214,10 @@
 			   location.href = "QueryOrderController?op=queryOrderByPage&queryLike="+queryLike;
 			   
 		   });
+		   
+		   $("#return").click(function(){
+			   location.href = "index.jsp";
+		   })
 		   
 	   });
 	</script>
