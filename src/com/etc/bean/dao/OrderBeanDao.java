@@ -1,6 +1,7 @@
 package com.etc.bean.dao;
 
 import com.etc.bean.entity.OrderBean;
+import com.etc.util.PageData;
 
 public interface OrderBeanDao {
 	/**
@@ -10,10 +11,12 @@ public interface OrderBeanDao {
 	 */
 	public boolean addOrderBean(OrderBean orderBean);
 	/**
-	 * 精确匹配手机号码查询订单信息
-	 * @param mobile
+	 * 精确匹配手机号码,分页查询出相关订单信息
+	 * @param pageNum 查询第几页
+	 * @param pageSize 每页显示数量
+	 * @param mobile 匹配的手机号码
 	 * @return
 	 */
-	public OrderBean queryMyOrder(String mobile);
+	public PageData<OrderBean> queryMyOrder(int pageNum,int pageSize,String mobile);
 	
 }
