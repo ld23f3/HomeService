@@ -4,24 +4,26 @@ import java.sql.SQLException;
 
 import com.etc.bean.dao.OrderBeanDao;
 import com.etc.bean.dao.impl.OrderBeanDaoImpl;
-import com.etc.entity.Courier;
-import com.etc.service.CourierService;
-import com.etc.service.impl.CourierServiceImpl;
+import com.etc.bean.entity.OrderBean;
 import com.etc.util.PageData;
 
 public class TestService {
 	public static void main(String[] args) throws SQLException {
 
 		
-		CourierService cs = new CourierServiceImpl();
-		PageData<Courier> pd = cs.getAllCourierByPageLike(1, 20, "");
-		System.out.println(pd.getData());
-		System.out.println(pd.getTotal());
+//		CourierService cs = new CourierServiceImpl();
+//		PageData<Courier> pd = cs.getAllCourierByPageLike(1, 20, "");
+//		System.out.println(pd.getData());
+//		System.out.println(pd.getTotal());
+		
 		// ProvinceDao pd = new ProvinceDaoImpl();
 		// List<Province>list = pd.queryAllProvince();
 		// Gson g = new Gson();
 		// System.out.println( g.toJson(list));
-		//OrderBeanDao obd = new OrderBeanDaoImpl();
+		OrderBeanDao obd = new OrderBeanDaoImpl();
+		 PageData<OrderBean>  pd =obd.queryMyOrder(1, 4, "15366245269");
+		 System.out.println( pd.getData() );
+		 System.out.println( pd.getTotal() );
 		//System.out.println(obd.queryMyOrder("489456"));
 		// OrderBean ob = new OrderBean("發件人", 14, 240, 1570, "關日璐xx號", "15366245269",
 		// "收件人", 14, 240, 1570, "龍田村", "13962698569", "這個是一個東西", 5, 5, 33.333);

@@ -18,14 +18,14 @@ public class LogisticsDaoImpl implements LogisticsDao {
 
 	@Override
 	public boolean addLogistics(Logistics logistics) {
-		String sql = "INSERT INTO LOGISTICS VALUES(LOGISTICS_SEQ.nextval,?,?,?,?,?,sysdate)";
+		String sql = "INSERT INTO LOGISTICS VALUES(LOGISTICS_SEQ.nextval,?,?,?,?,?,sysdate,0)";
 		return DBUtil.execute(sql, logistics.getORDERNO(), logistics.getPROVINCEID(), logistics.getCITYID(),
 				logistics.getCOUNTYID(), logistics.getDETAILADDRESS()) > 0;
 	}
 
 	@Override
 	public boolean addLogistics(Connection conn, Logistics logistics) {
-		String sql = "INSERT INTO LOGISTICS VALUES(LOGISTICS_SEQ.nextval,?,?,?,?,?,sysdate)";
+		String sql = "INSERT INTO LOGISTICS VALUES(LOGISTICS_SEQ.nextval,?,?,?,?,?,sysdate,0)";
 		return DBUtil.execute(sql, conn, logistics.getORDERNO(), logistics.getPROVINCEID(), logistics.getCITYID(),
 				logistics.getCOUNTYID(), logistics.getDETAILADDRESS()) > 0;
 	}

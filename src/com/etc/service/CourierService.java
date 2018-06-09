@@ -17,6 +17,12 @@ public interface CourierService {
 	 */
 	public boolean register(Courier courier);
 	/**
+	 * 根据区县编号,查询到该区县的负责人(快递员)
+	 * @param countyId 区县编号
+	 * @return
+	 */
+	public Courier getCourierByCountyId(int countyId);
+	/**
 	 * 登录
 	 * 页面登陆时需要判断在职状态 0在职,1 离职
 	 *  [ COURIERSTATUS]

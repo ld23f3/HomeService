@@ -52,4 +52,13 @@ public class CourierDaoImpl implements CourierDao {
 		return DBUtil.getOraclePage(sql, pageNum, pageSize, Courier.class, "%" + like + "%", "%" + like + "%");
 	}
 
+	@Override
+	public Courier queryCourierByCountyId(int countyId) {
+		String sql = "select * from COURIER where  trunc(COURIERNO / 10000)=?";
+		List<Courier> list = (List<Courier>)DBUtil.select(sql, Courier.class, countyId);
+		if(list.size()>0)
+			return list.get(0);
+		return null;
+	}
+
 }

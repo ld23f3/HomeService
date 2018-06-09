@@ -12,7 +12,13 @@ public interface CourierDao {
 	 * @param courier 快递员信息
 	 * @return
 	 */
-	public boolean addCourier(Courier courier); 
+	public boolean addCourier(Courier courier);
+	/**
+	 * 根据区县编号,查询到该区县的负责人(快递员)
+	 * @param countyId 区县编号
+	 * @return
+	 */
+	public Courier queryCourierByCountyId(int countyId);
 	/**
 	 * 匹配 手机号码密码 /匹配 工号和密码
 	 * @param account

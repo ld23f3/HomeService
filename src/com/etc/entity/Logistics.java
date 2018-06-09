@@ -8,6 +8,7 @@ public class Logistics {
 	private int COUNTYID;//区县ID
 	private String DETAILADDRESS;//详细地址
 	private String CREATEDATE;//创建时间
+	private int SENDSTATE;//运送状态......下单后会立马把运送路线规划出来.0未运送.1运送到
 	/**
 	 * 默认构造
 	 */
@@ -33,29 +34,7 @@ public class Logistics {
 	}
 
 
-	/**
-	 * 
-	 * 完整构造
-	 * @param lOGISTICSNO 物流编号
-	 * @param oRDERNO 订单编号
-	 * @param pROVINCEID 省份ID
-	 * @param cITYID 城市ID
-	 * @param cOUNTYID 区县ID
-	 * @param dETAILADDRESS 详细地址(xxx分部)
-	 * @param cREATEDATE 创建时间
-	 */
-	public Logistics(int lOGISTICSNO, int oRDERNO, int pROVINCEID, int cITYID, int cOUNTYID, String dETAILADDRESS,
-			String cREATEDATE) {
-		super();
-		LOGISTICSNO = lOGISTICSNO;
-		ORDERNO = oRDERNO;
-		PROVINCEID = pROVINCEID;
-		CITYID = cITYID;
-		COUNTYID = cOUNTYID;
-		DETAILADDRESS = dETAILADDRESS;
-		CREATEDATE = cREATEDATE;
-	}
-
+	
 
 
 	public int getLOGISTICSNO() {
@@ -129,13 +108,21 @@ public class Logistics {
 		CREATEDATE = cREATEDATE;
 	}
 
+	
 
+	public int getSENDSTATE() {
+		return SENDSTATE;
+	}
+
+	public void setSENDSTATE(int sENDSTATE) {
+		SENDSTATE = sENDSTATE;
+	}
 
 	@Override
 	public String toString() {
 		return "Logistics [LOGISTICSNO=" + LOGISTICSNO + ", ORDERNO=" + ORDERNO + ", PROVINCEID=" + PROVINCEID
 				+ ", CITYID=" + CITYID + ", COUNTYID=" + COUNTYID + ", DETAILADDRESS=" + DETAILADDRESS + ", CREATEDATE="
-				+ CREATEDATE + "]";
+				+ CREATEDATE + ", SENDSTATE=" + SENDSTATE + "]";
 	}
 
 	

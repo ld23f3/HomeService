@@ -35,6 +35,11 @@ public class CourierServiceImpl implements CourierService {
 	@Override
 	public PageData<Courier> getAllCourierByPageLike(int pageNum, int pageSize, String like) {
 		return cd.queryAllCourierByPageLike(pageNum, pageSize, like);
+	}
+
+	@Override
+	public Courier getCourierByCountyId(int countyId) {
+		return cd.queryCourierByCountyId(countyId);
 	}	
 	
 
