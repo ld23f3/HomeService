@@ -144,7 +144,7 @@
 													<div class="infbox1">
 														<ul>
 															<li>
-																<label>订单编号</label><input name="" type="text">
+																<label>订单编号</label><input name="" type="text" value="${order.ORDERNO}">
 															</li>
 															</br>
 															<li>

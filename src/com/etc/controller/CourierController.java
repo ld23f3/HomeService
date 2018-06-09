@@ -59,9 +59,9 @@ public class CourierController extends HttpServlet {
 					HttpSession session = request.getSession();
 					// 将用户信息存储在session对象中
 					session.setAttribute("courier", co);
-					request.getRequestDispatcher("Back/collect.jsp").forward(request, response);
+					request.getRequestDispatcher("CourierController?op=queryOrderByPage0").forward(request, response);
 				} else {
-					System.out.println("已离职");
+
 					response.sendRedirect("Back/courierlogin.jsp");
 				}
 			} else {
@@ -80,37 +80,155 @@ public class CourierController extends HttpServlet {
 			response.sendRedirect("Back/courierlogin.jsp");
 
 		} else if ("queryOrderByPage0".equals(op)) {
-			
-			int countyId = 15250002/10000;
+
+			// int countyId = 1525;
+			HttpSession session = request.getSession();
+			Courier co = (Courier) session.getAttribute("courier");
+			// System.out.println("Id ="+co.getCOURIERNO());
+			int countyId = co.getCOURIERNO() / 10000;
 			int pageNum = 1;
-			int pageSize = 10;
+			int pageSize = 8;
 			int status = 0;
 			String queryLike = "";
+			// System.out.println("countyId"+countyId);
 
 			// 获取页面传递过来的页码page参数
-			if (request.getParameter("pageNum") != null) {
-				pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			if (request.getParameter("page") != null) {
+				pageNum = Integer.parseInt(request.getParameter("page"));
 
 			}
 			if (request.getParameter("pageSize") != null) {
 				pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
 			}
 			if (null != request.getParameter("queryLike")) {
 				queryLike = request.getParameter("queryLike");
 
 				queryLike = new String(queryLike.getBytes("ISO-8859-1"), "utf-8");
 			}
+
 			// 分页查询
-			PageData<Order> pdo = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
+			PageData<Order> pds = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
 
 			// 存储数据
-			request.setAttribute("pdo", pdo);
+			request.setAttribute("pds", pds);
 
 			// 将模糊出查询的字符串 也转发回来
 			request.setAttribute("queryLike", queryLike);
 			// 转发
-			request.getRequestDispatcher("mvc/collect.jsp").forward(request, response);
-		}
+			request.getRequestDispatcher("Back/notcollect.jsp").forward(request, response);
+		} else if ("queryOrderByPage1".equals(op)) {
+
+			HttpSession session = request.getSession();
+			Courier co = (Courier) session.getAttribute("courier");
+			// System.out.println("Id ="+co.getCOURIERNO());
+			int countyId = co.getCOURIERNO() / 10000;
+			int pageNum = 1;
+			int pageSize = 8;
+			int status = 1;
+			String queryLike = "";
+
+			// 获取页面传递过来的页码page参数
+
+			if (request.getParameter("page") != null) {
+				pageNum = Integer.parseInt(request.getParameter("page"));
+
+			}
+			if (request.getParameter("pageSize") != null) {
+				pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
+			}
+			if (null != request.getParameter("queryLike")) {
+				queryLike = request.getParameter("queryLike");
+
+				queryLike = new String(queryLike.getBytes("ISO-8859-1"), "utf-8");
+			}
+
+			// 分页查询
+			PageData<Order> pds = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
+
+			// 存储数据
+			request.setAttribute("pds", pds);
+
+			// 将模糊出查询的字符串 也转发回来
+			request.setAttribute("queryLike", queryLike);
+			// 转发
+			request.getRequestDispatcher("Back/collect.jsp").forward(request, response);
+		} else if ("queryOrderByPage2".equals(op)) {
+
+			HttpSession session = request.getSession();
+			Courier co = (Courier) session.getAttribute("courier");
+			// System.out.println("Id ="+co.getCOURIERNO());
+			int countyId = co.getCOURIERNO() / 10000;
+			int pageNum = 1;
+			int pageSize = 8;
+			int status = 2;
+			String queryLike = "";
+
+			// 获取页面传递过来的页码page参数
+
+			if (request.getParameter("page") != null) {
+				pageNum = Integer.parseInt(request.getParameter("page"));
+
+			}
+			if (request.getParameter("pageSize") != null) {
+				pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
+			}
+			if (null != request.getParameter("queryLike")) {
+				queryLike = request.getParameter("queryLike");
+
+				queryLike = new String(queryLike.getBytes("ISO-8859-1"), "utf-8");
+			}
+
+			// 分页查询
+			PageData<Order> pds = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
+
+			// 存储数据
+			request.setAttribute("pds", pds);
+
+			// 将模糊出查询的字符串 也转发回来
+			request.setAttribute("queryLike", queryLike);
+			// 转发
+			request.getRequestDispatcher("Back/notdispatch.jsp").forward(request, response);
+		} else if ("queryOrderByPage3".equals(op)) {
+
+			HttpSession session = request.getSession();
+			Courier co = (Courier) session.getAttribute("courier");
+			// System.out.println("Id ="+co.getCOURIERNO());
+			int countyId = co.getCOURIERNO() / 10000;
+			int pageNum = 1;
+			int pageSize = 8;
+			int status = 3;
+			String queryLike = "";
+
+			// 获取页面传递过来的页码page参数
+
+			if (request.getParameter("page") != null) {
+				pageNum = Integer.parseInt(request.getParameter("page"));
+
+			}
+			if (request.getParameter("pageSize") != null) {
+				pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
+			}
+			if (null != request.getParameter("queryLike")) {
+				queryLike = request.getParameter("queryLike");
+
+				queryLike = new String(queryLike.getBytes("ISO-8859-1"), "utf-8");
+			}
+
+			// 分页查询
+			PageData<Order> pds = ods.getMyOrderByPage(countyId, pageNum, pageSize, status, queryLike);
+
+			// 存储数据
+			request.setAttribute("pds", pds);
+
+			// 将模糊出查询的字符串 也转发回来
+			request.setAttribute("queryLike", queryLike);
+			// 转发
+			request.getRequestDispatcher("Back/dispatch.jsp").forward(request, response);
+		} 
 	}
 
 	/**
