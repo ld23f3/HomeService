@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="Assets/css/index.css" />
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 <!--騰訊地圖-->
 <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
 <!--騰訊地圖-->

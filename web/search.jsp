@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css" />
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
