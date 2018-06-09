@@ -12,6 +12,7 @@ import com.etc.entity.Logistics;
 import com.etc.entity.Order;
 import com.etc.service.CourierService;
 import com.etc.service.impl.CourierServiceImpl;
+import com.etc.util.DBUtil;
 
 public class LogisticsBeanDaoImpl implements LogisticsBeanDao {
 	LogisticsDao ld = new LogisticsDaoImpl();
@@ -21,8 +22,8 @@ public class LogisticsBeanDaoImpl implements LogisticsBeanDao {
 		// S区域等待揽件-S县-S市-R市-S县-S区域XXX手中
 		// 员工生成编号的规则为区域编号*10000+序列号
 		// OrderBeanDao obd = new OrderBeanDaoImpl();
-		order = new Order(20180090, "寄件人", 19, 310, 2018, "送", "15259620412", "收件人", 14, 236, 2017, "收", "15259620412",
-				"09-6月 -18", 0, "");
+//		order = new Order(20180090, "寄件人", 19, 310, 2018, "送", "15259620412", "收件人", 14, 236, 2017, "收", "15259620412",
+//				"09-6月 -18", 0, "");
 		List<Logistics> list = new ArrayList<Logistics>();
 		boolean arriveCountySend = false;//抵达送货区县
 		boolean arriveCitySend = false;//抵达送货城市
@@ -84,23 +85,33 @@ public class LogisticsBeanDaoImpl implements LogisticsBeanDao {
 		//添加一条抵达收件人手中,必加
 		list.add(new Logistics(order.getORDERNO(), order.getRECEIVERPROVINCEID(), order.getRECEIVERCITYID(),
 				order.getRECEIVERCOUNTYID(), order.getRECEIVERADDRESS()));
-		
 		for (Logistics log : list) {
 			boolean addState = ld.addLogistics(log);
-			System.out.println(log  + (addState?"成功":"失败"));
 		}
 
-		CourierService cs = new CourierServiceImpl();
-		Courier sendCourier = cs.getCourierByCountyId(order.getSENDERCOUNTYID());
-
-		System.out.println(sendCourier);
+		
 
 	}
 
 	@Override
 	public List<LogisticsBean> queryTruckRoutingByOrderNo(int orderNo) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select L.LOGISTICSNO, L.ORDERNO,P.PROVINCEID, P.PROVINCENAME,C.CITYID, C.CITYNAME,\r\n" + 
+				"CY.COUNTYID, CY.COUNTYNAME,L.DETAILADDRESS\r\n" + 
+				",L.CREATEDATE,L.SENDSTATE\r\n" + 
+				"from  LOGISTICS L LEFT join PROVINCE P on L.PROVINCEID = P.PROVINCEID\r\n" + 
+				"LEFT join CITY C ON L.CITYID = C.CITYID \r\n" + 
+				"LEFT join COUNTY CY ON L.COUNTYID = CY.COUNTYID\r\n" + 
+				"where L.ORDERNO = ? \r\n" + 
+				"ORDER BY L.LOGISTICSNO";
+		@SuppressWarnings("unchecked")
+		List<LogisticsBean> list = (List<LogisticsBean>)DBUtil.select(sql, LogisticsBean.class, orderNo);
+		for (LogisticsBean logisticsBean : list) {
+			System.out.println(logisticsBean);
+		}
+//		CourierService cs = new CourierServiceImpl();
+//		Courier sendCourier = cs.getCourierByCountyId(order.getSENDERCOUNTYID());
+//		System.out.println(sendCourier);
+		return list;
 	}
 
 }

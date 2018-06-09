@@ -17,7 +17,6 @@ public class LogisticsBean {
 	private String DETAILADDRESS;// 详细地址
 	private String CREATEDATE;// 创建时间
 	private int SENDSTATE;// 运送状态......下单后会立马把运送路线规划出来.0未运送.1运送到
-	
 	/**
 	 * 默认构造
 	 */
