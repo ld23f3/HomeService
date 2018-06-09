@@ -31,7 +31,7 @@ public class OrderDaoImpl implements OrderDao {
 	public int addOrder(Connection conn, Order order) {
 		String sql = "INSERT INTO \"ORDER\" values(?,?,?,?,?,?,?,?,?,?,?,?,?,SYSDATE,0,null)";
 		return DBUtil.execute(sql, conn, order.getORDERNO(), order.getSENDER(), order.getSENDERPROVINCEID(),
-				order.getSENDERCITYID(), order.getSENDERCITYID(), order.getSENDERADDRESS(), order.getSENDERMOBILE(),
+				order.getSENDERCITYID(), order.getSENDERCOUNTYID(), order.getSENDERADDRESS(), order.getSENDERMOBILE(),
 				order.getRECEIVER(), order.getRECEIVERPROVINCEID(), order.getRECEIVERCITYID(),
 				order.getRECEIVERCOUNTYID(), order.getRECEIVERADDRESS(), order.getRECEIVERMOBILE());
 	}

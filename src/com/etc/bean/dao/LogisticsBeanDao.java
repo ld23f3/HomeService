@@ -10,9 +10,9 @@ public interface LogisticsBeanDao {
 	 * 设置运送路线.
 	 * 每次下单的时候就初始化出一条运送路线。
 	 * 将所有的运送信息都存入到数据库中.
-	 * @return
+	 * @param order
 	 */
-	public boolean setTruckRouting(Order order);
+	public void setTruckRouting(Order order);
 	/**
 	 * 根据订单号，查找物流信息
 	 * @param ORDERNO
