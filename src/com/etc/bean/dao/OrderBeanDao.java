@@ -9,4 +9,11 @@ public interface OrderBeanDao {
 	 * @return
 	 */
 	public boolean addOrderBean(OrderBean orderBean);
+	/**
+	 * 精确匹配手机号码查询订单信息
+	 * @param mobile
+	 * @return
+	 */
+	public OrderBean queryMyOrder(String mobile);
+	
 }

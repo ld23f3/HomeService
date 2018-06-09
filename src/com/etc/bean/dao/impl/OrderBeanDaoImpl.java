@@ -2,6 +2,7 @@ package com.etc.bean.dao.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.etc.bean.dao.OrderBeanDao;
 import com.etc.bean.entity.OrderBean;
@@ -51,6 +52,30 @@ public class OrderBeanDaoImpl implements OrderBeanDao {
 		
 		
 		
+	}
+	@Override
+	public OrderBean queryMyOrder(String mobile) {
+		String sql = "SELECT O1.ORDERNO,O1.SENDER,p.PROVINCENAME AS SENDERPROVINCENAME,\r\n" + 
+				"c.CITYNAME AS SENDERCITYNAME,\r\n" + 
+				"co.COUNTYNAME AS SENDERCOUNTYNAME,\r\n" + 
+				"O1.SENDERADDRESS,\r\n" + 
+				"O1.SENDERMOBILE,O1.RECEIVER,p2.PROVINCENAME AS RECEIVERPROVINCENAME,\r\n" + 
+				"c2.CITYNAME AS RECEIVERCITYNAME,\r\n" + 
+				"co2.COUNTYNAME AS RECEIVERCOUNTYNAME,\r\n" + 
+				"O1.RECEIVERADDRESS,\r\n" + 
+				"O1.RECEIVERMOBILE,O1.ORDERDATE,O1.ORDERSTATUS\r\n" + 
+				" FROM \"ORDER\" O1  LEFT JOIN PROVINCE p on  SENDERPROVINCEID = p.PROVINCEID\r\n" + 
+				"  LEFT JOIN CITY c on  O1.SENDERCITYID = c.CITYID\r\n" + 
+				"  LEFT JOIN  COUNTY co on  O1.SENDERCOUNTYID = CO.COUNTYID\r\n" + 
+				" LEFT JOIN PROVINCE p2 on RECEIVERPROVINCEID = p2.PROVINCEID\r\n" + 
+				"  LEFT JOIN CITY c2 on  O1.SENDERCITYID = c2.CITYID\r\n" + 
+				"  LEFT JOIN  COUNTY co2 on  O1.SENDERCOUNTYID = CO2.COUNTYID\r\n" + 
+				"  where O1.SENDERMOBILE = ? or O1.RECEIVERMOBILE =?" ;
+		@SuppressWarnings("unchecked")
+		List<OrderBean> list =(List<OrderBean>) DBUtil.select(sql, OrderBean.class, mobile,mobile);
+		if(list.size() >0)
+			return list.get(0);
+		return null;
 	}
 
 }
