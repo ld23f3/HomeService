@@ -13,6 +13,7 @@ import com.etc.service.OrderDaoService;
 import com.etc.service.impl.GoodsServiceImpl;
 import com.etc.service.impl.OrderDaoServiceImpl;
 import com.etc.util.DBUtil;
+import com.etc.util.PageData;
 
 public class OrderBeanDaoImpl implements OrderBeanDao {
 	OrderDaoService ods = new OrderDaoServiceImpl();
@@ -54,7 +55,7 @@ public class OrderBeanDaoImpl implements OrderBeanDao {
 		
 	}
 	@Override
-	public OrderBean queryMyOrder(String mobile) {
+	public PageData<OrderBean> queryMyOrder(int pageNum,int pageSize,String mobile) {
 		String sql = "SELECT O1.ORDERNO,O1.SENDER,p.PROVINCENAME AS SENDERPROVINCENAME,\r\n" + 
 				"c.CITYNAME AS SENDERCITYNAME,\r\n" + 
 				"co.COUNTYNAME AS SENDERCOUNTYNAME,\r\n" + 
@@ -72,10 +73,9 @@ public class OrderBeanDaoImpl implements OrderBeanDao {
 				"  LEFT JOIN  COUNTY co2 on  O1.SENDERCOUNTYID = CO2.COUNTYID\r\n" + 
 				"  where O1.SENDERMOBILE = ? or O1.RECEIVERMOBILE =?" ;
 		@SuppressWarnings("unchecked")
-		List<OrderBean> list =(List<OrderBean>) DBUtil.select(sql, OrderBean.class, mobile,mobile);
-		if(list.size() >0)
-			return list.get(0);
-		return null;
+		//List<OrderBean> list =(List<OrderBean>) DBUtil.select(sql, OrderBean.class, mobile,mobile);
+		PageData<OrderBean> pd= DBUtil.getOraclePage(sql, pageNum, pageSize, OrderBean.class, mobile,mobile);
+		return pd;
 	}
 
 }
