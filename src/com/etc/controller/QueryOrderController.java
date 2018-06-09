@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.etc.bean.dao.OrderBeanDao;
+import com.etc.bean.dao.impl.OrderBeanDaoImpl;
+import com.etc.bean.entity.OrderBean;
 import com.etc.entity.Logistics;
 import com.etc.entity.Order;
 import com.etc.service.OrderDaoService;
@@ -23,6 +26,7 @@ public class QueryOrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	OrderDaoService ods = new OrderDaoServiceImpl();
+	OrderBeanDao obd = new OrderBeanDaoImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -84,10 +88,11 @@ public class QueryOrderController extends HttpServlet {
 		// url = "index.jsp";
 		// }
 		// 得到的分页返回结果
-		PageData<Order> pd = ods.getAllOrderByPage(pageNum, pageSize, queryLike);
-		for (Order o : pd.getData()) {
-			System.out.println(o);
-		}
+//		PageData<Order> pd = ods.getAllOrderByPage(pageNum, pageSize, queryLike);
+//		for (Order o : pd.getData()) {
+//			System.out.println(o);
+//		}
+		PageData<OrderBean> pd = obd.queryMyOrder(pageNum, pageSize, queryLike);
 		System.out.println(pd.getTotalPage());
 		// 将ods存储在request请求范围内;
 		 request.setAttribute("pd", pd);
