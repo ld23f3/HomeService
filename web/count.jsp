@@ -30,11 +30,11 @@
 						"display", "block");
 				
 				$("#price").text(data);
-				$("#senderCity").text($("#CitySelect").val());			
-				$("#receiverCity").text($("#CitySelect_").val());
+				$("#senderCity").text($("#CitySelect option:selected").text());			
+				$("#receiverCity").text($("#CitySelect_ option:selected").text());
 				$("#totalWeight").text($("#weight").val());
 				$("#price").text(data);
-				
+
 				console.log("data:"+data);
 			});
 		});
