@@ -110,7 +110,7 @@
 	<div class="foot_bg">
 		<div class="foot">
 			<div class="foot_t">
-				<a href="">业务介绍</a> <a href="">联系我们</a>
+					<a href="group_intro.jsp">团队介绍</a>
 			</div>
 			<div class="copy">Copyright&copy;&nbsp;2012-2015&nbsp;
 				宅急送有限责任公司.&nbsp;&nbsp;All&nbsp;&nbsp;rights&nbsp;&nbsp;reserved.
