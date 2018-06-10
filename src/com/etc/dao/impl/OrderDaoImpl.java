@@ -79,5 +79,12 @@ public class OrderDaoImpl implements OrderDao {
 		return DBUtil.getOraclePage(sql, pageNum, pageSize, Order.class, likeStr, likeStr, queryLike, likeStr, likeStr,
 				queryLike,countyId,countyId,countyId,countyId,status);
 	}
+	
+	
+	@Override
+	public boolean deleteOrderNO(int orderNo) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute("DELETE FROM \"ORDER\"  WHERE orderno=?", orderNo)>0;
+	}
 
 }

@@ -47,4 +47,10 @@ public class OrderDaoServiceImpl implements OrderDaoService {
 	}
 
 	
+	@Override
+	public boolean deleteOrderNO(int orderNo) {
+		// TODO Auto-generated method stub
+		return od.deleteOrderNO(orderNo);
+	}
+	
 }

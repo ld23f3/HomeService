@@ -74,4 +74,11 @@ public interface OrderDao {
 	 */
 	public PageData<Order> queryOrderByCourieridPage(int countyId, int pageNum,int pageSize,int status, String queryLike);
 
+	/**
+	 * Í¨¹ýorderNoÉ¾³ý
+	 * @param orderNo
+	 * @return
+	 */
+	public boolean deleteOrderNO(int orderNo);
+	
 }
