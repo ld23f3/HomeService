@@ -11,17 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.etc.bean.dao.LogisticsBeanDao;
 import com.etc.bean.dao.OrderBeanDao;
+import com.etc.bean.dao.impl.LogisticsBeanDaoImpl;
 import com.etc.bean.dao.impl.OrderBeanDaoImpl;
 import com.etc.bean.entity.OrderBean;
 import com.etc.entity.City;
 import com.etc.entity.County;
+import com.etc.entity.Logistics;
+import com.etc.entity.Order;
 import com.etc.entity.Province;
 import com.etc.service.CityService;
 import com.etc.service.CountyService;
+import com.etc.service.LogisticsService;
 import com.etc.service.ProvinceService;
 import com.etc.service.impl.CityServiceImpl;
 import com.etc.service.impl.CountyServiceImpl;
+import com.etc.service.impl.LogisticsServiceImpl;
 import com.etc.service.impl.ProvinceServiceImpl;
 import com.google.gson.Gson;
 
@@ -40,6 +46,7 @@ public class UserController extends HttpServlet {
 	//添加订单
 	OrderBeanDao obd=new OrderBeanDaoImpl();
 	
+	LogisticsBeanDao logisticsBeanDao = new LogisticsBeanDaoImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -103,6 +110,7 @@ public class UserController extends HttpServlet {
 			out.close();
 
 		} else if ("addOrder".equals(op)) {
+			// 添加訂單
 			//区
 			int CountyId=0;
 			int RecivCountyId=0;
@@ -153,20 +161,24 @@ public class UserController extends HttpServlet {
 			OrderBean ob = new OrderBean(SENDER, ProvinceId, CityId, CountyId, SENDERADDRESS, SENDERMOBILE, RECEIVER, ReciveProvinceId, ReciveCityId, RecivCountyId, RECEIVERADDRESS, RECEIVERMOBILE, GOODSTYPE, GOODSWEIGHT, GOODSNUMBER, 10);
 			
 			
-			boolean order=obd.addOrderBean(ob);
+			int orderNo=obd.addOrderBeanReturnNo(ob);
 			
-			Gson gson = new Gson();
-			String str = gson.toJson(order);
-			// 此时我们的str是一个字符串，讲字符串返回到页面
-			//System.out.println("County:" + str);
-			// 响应
-			PrintWriter out = response.getWriter();
-			out.print(str);
-			out.close();
+			System.out.println("orderNo : "+orderNo);
 			
-			
-			
-			
+			if(orderNo>0) {
+				Order order = new Order(orderNo, SENDER, ProvinceId, CityId, CountyId, SENDERADDRESS, SENDERMOBILE, RECEIVER, ReciveProvinceId, ReciveCityId, RecivCountyId, RECEIVERADDRESS, RECEIVERMOBILE);
+				logisticsBeanDao.setTruckRouting(order);	
+				Gson gson = new Gson();
+				String str = gson.toJson(order);
+				// 此时我们的str是一个字符串，讲字符串返回到页面
+				//System.out.println("County:" + str);
+				// 响应
+				PrintWriter out = response.getWriter();
+				out.print(str);
+				out.close();
+					
+			}
+				
 			//request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		}

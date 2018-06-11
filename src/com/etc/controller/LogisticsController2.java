@@ -64,13 +64,13 @@ public class LogisticsController2 extends HttpServlet {
 
 		LogisticsService ls = new LogisticsServiceImpl();
 
-		List<Logistics> list = new ArrayList<Logistics>();
-		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
-		list.add(l);
-//		List<Logistics> list = ls.queryLogisticsByOrderNo(orderNo);
-//		for (Logistics logistics : list) {
-//			System.out.println(logistics);
-//		}
+//		List<Logistics> list = new ArrayList<Logistics>();
+//		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
+//		list.add(l);
+		List<Logistics> list = ls.queryLogisticsByOrderNo(orderNo);
+		for (Logistics logistics : list) {
+			System.out.println(logistics);
+		}
 
 		// 将查询的关键字也存储起来 传递到jsp
 		request.setAttribute("logistics", list);
