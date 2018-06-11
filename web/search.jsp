@@ -191,7 +191,7 @@
 	   
 	   function getdetail(orderNo){
 		   
-		 location.href = "LogisticsController?op=query&orderNo="+ orderNo;
+		 location.href = "follow.jsp?orderNo="+ orderNo;
 		 console.log("orderNo="+orderNo);
 	   }
 	</script>

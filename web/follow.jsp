@@ -14,6 +14,70 @@
 <link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico" />
 <link rel="stylesheet" href="Assets/css/layui/css/layui.css" media="all">
 <script src="Assets/css/layui/layui.js" charset="utf-8"></script>
+<script>
+
+	function getQueryVariable(variable)
+	{
+	   var query = window.location.search.substring(1);
+	   var vars = query.split("&");
+	   for (var i=0;i<vars.length;i++) {
+	           var pair = vars[i].split("=");
+	           if(pair[0] == variable){return pair[1];}
+	   }
+	   return(false);
+	}
+	
+	function getRequest(){
+		
+		var result = getQueryVariable("orderNo");
+		
+		if(result!=false){
+			
+			console.log("XXX="+result);
+			
+			$("#orderNo").text(result);
+			$.post("LogisticsController?op=queryCity&orderNo="+ result,
+					function(data, status) {
+						array = JSON.parse(data);
+						
+						console.log(array.length);
+						
+						
+						$.each(array,function(index,log) {
+							
+							var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+								+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+								+ log.CREATEDATE+ "</h3>"+ "<p>【運輸中】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+								+ "</p>"+ "</div></li>"
+							
+							if(index==0){
+								var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+									+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+									+ log.CREATEDATE+ "</h3>"+ "<p>【已攬件】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+									+ "</p>"+ "</div></li>"
+							}
+							
+							if(index==(array.length-1)){
+								var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+									+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+									+ log.CREATEDATE+ "</h3>"+ "<p>【已送達】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+									+ "</p>"+ "</div></li>"
+							}
+					
+							
+								
+							$("#myline").append(s);
+							});
+																					
+					});
+		}
+		
+	}
+
+	getRequest();
+</script>
+
+
 </head>
 
 <body>

@@ -88,12 +88,12 @@
 			<h5 class="centered">宅急送</h5>
 
 			<li class="mt"><a class="hover"
-				href="${pageContext.request.contextPath}/Manager/order.jsp"> <i
+				href="${pageContext.request.contextPath}/OrderController?op=queryByPage"> <i
 					class="fa fa-dashboard"></i> <span>订单管理</span>
 			</a></li>
 
 			<li class="sub-menu"><a class="hover"
-				href="${pageContext.request.contextPath}/Manager/courier.jsp"> <i
+				href="${pageContext.request.contextPath}/ManageCourierController?op=getCourierByPage&like="> <i
 					class="fa fa-desktop"></i> <span>快递员管理</span>
 			</a></li>
 

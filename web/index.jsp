@@ -124,6 +124,7 @@
 						map : map,
 						position : results.detail.latLng
 					});
+	
 					//marker.setTitle(i + 1);
 					markers.push(marker);
 					//}
