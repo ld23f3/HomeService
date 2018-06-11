@@ -27,5 +27,11 @@ public interface OrderBeanDao {
 	 * @return
 	 */
 	public PageData<OrderBean> queryMyOrder(int pageNum,int pageSize,String mobile);
+	/**
+	 * 根据订单编号,查询指定的订单信息
+	 * @param orderNo
+	 * @return
+	 */
+	public OrderBean queryMyOrderById(int orderNo);
 	
 }
