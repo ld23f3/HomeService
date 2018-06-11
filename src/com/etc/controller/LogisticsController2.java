@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.etc.bean.dao.LogisticsBeanDao;
+import com.etc.bean.dao.impl.LogisticsBeanDaoImpl;
+import com.etc.bean.entity.LogisticsBean;
 import com.etc.entity.Logistics;
 import com.etc.service.LogisticsService;
 import com.etc.service.impl.LogisticsServiceImpl;
@@ -22,7 +25,7 @@ import com.etc.util.PageData;
 public class LogisticsController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	LogisticsService ls = new LogisticsServiceImpl();
+	LogisticsBeanDao ls = new LogisticsBeanDaoImpl();
 
 	/**
 	 * Default constructor.
@@ -62,14 +65,14 @@ public class LogisticsController2 extends HttpServlet {
 			orderNo = Integer.parseInt(orderNoStr);
 		}
 
-		LogisticsService ls = new LogisticsServiceImpl();
+		//LogisticsService ls = new LogisticsServiceImpl();
 
 //		List<Logistics> list = new ArrayList<Logistics>();
 //		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
 //		list.add(l);
-		List<Logistics> list = ls.queryLogisticsByOrderNo(orderNo);
-		for (Logistics logistics : list) {
-			System.out.println(logistics);
+		List<LogisticsBean> list = ls.queryTruckRoutingByOrderNo(orderNo);
+		for (LogisticsBean logisticsBean : list) {
+			System.out.println(logisticsBean);
 		}
 
 		// 将查询的关键字也存储起来 传递到jsp

@@ -65,11 +65,11 @@ public class LogisticsController extends HttpServlet {
 			orderNo = Integer.parseInt(orderNoStr);
 		}
 
-		LogisticsService ls = new LogisticsServiceImpl();
+		//		LogisticsService ls = new LogisticsServiceImpl();
 
-//		List<Logistics> list = new ArrayList<Logistics>();
-//		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
-//		list.add(l);
+		//		List<Logistics> list = new ArrayList<Logistics>();
+		//		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
+		//		list.add(l);
 		
 		
 		List<LogisticsBean> list = ls.queryTruckRoutingByOrderNo(orderNo);
