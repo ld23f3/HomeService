@@ -57,7 +57,7 @@
 		            </div>
 		            <div class="registration">
 		                
-		                <a class="" href="${pageContext.request.contextPath}/Back/pinpwd.jsp">
+		                <a class="" href="${pageContext.request.contextPath}/Manager/pinpwd.jsp">
 		                    修改密码
 		                </a>
 		            </div>

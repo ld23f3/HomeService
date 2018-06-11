@@ -124,7 +124,7 @@
 				<input type="text" id="searchLike" class="form-control"
 					placeholder="Search..." value="${queryLike==null?'':queryLike}">
 				<input type="button" name="" id="btnSearch" value="搜索" />
-				<h2>未揽收清單</h2>
+				<h2>未派送清單</h2>
 			</form>
 			<div class="table-responsive">
 				<table class="table table-striped">
@@ -156,9 +156,7 @@
 									<td>${order.RECEIVERMOBILE}</td>
 									<td>${order.ORDERDATE}</td>
 									<td>未派件</td>
-									<td><a href="${pageContext.request.contextPath}/Back/collect_detail.jsp">修改</a></td>
-									<%-- <td><a href="${pageContext.request.contextPath}/CourierController?op=up&orderNo=${order.ORDERNO}">修改</a></td> --%>
-<%-- 									<td><button class="update" value="${order.ORDERNO}">修改</button></td> --%>
+									<td><a href="${pageContext.request.contextPath}/CourierController?op=updispatch&orderNo=${order.ORDERNO}">修改</a></td>
 								</tr>
 							</c:forEach>
 						</c:if>

@@ -156,8 +156,8 @@
 									<td>${order.RECEIVERMOBILE}</td>
 									<td>${order.ORDERDATE}</td>
 									<td>未揽件</td>
-									<td><a href="${pageContext.request.contextPath}/Back/collect_detail.jsp">修改</a></td>
-									<%-- <td><a href="${pageContext.request.contextPath}/CourierController?op=up&orderNo=${order.ORDERNO}">修改</a></td> --%>
+									<%-- <td><a href="${pageContext.request.contextPath}/Back/collect_detail.jsp">修改</a></td> --%>
+									<td><a href="${pageContext.request.contextPath}/CourierController?op=upcollect&orderNo=${order.ORDERNO}">修改</a></td>
 <%-- 									<td><button class="update" value="${order.ORDERNO}">修改</button></td> --%>
 								</tr>
 							</c:forEach>
