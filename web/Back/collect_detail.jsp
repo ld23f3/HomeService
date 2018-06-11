@@ -54,9 +54,8 @@
 				</div>
 				<div class="top-menu">
 					<ul class="nav pull-right top-menu">
-						<li>
-							<a class="logout" href="login.html">退出登陆</a>
-						</li>
+						<li><a class="logout"
+				href="${pageContext.request.contextPath}/Back/courierlogin.jsp">退出登陆</a></li>
 					</ul>
 				</div>
 
@@ -68,48 +67,40 @@
       *********************************************************************************************************************************************************** -->
 			<!--sidebar start-->
 			<aside>
-				<div id="sidebar" class="nav-collapse ">
-					<!-- sidebar menu start-->
-					<ul class="sidebar-menu" id="nav-accordion">
+	<div id="sidebar" class="nav-collapse ">
+		<!-- sidebar menu start-->
+		<ul class="sidebar-menu" id="nav-accordion">
 
-						<p class="centered">
-							<a href="profile.html"><img src="${pageContext.request.contextPath}/Assets/img/ui-sam.jpg" class="img-circle" width="60"></a>
-						</p>
-						<h5 class="centered">宅急送</h5>
+			<p class="centered">
+				<a href="profile.html"><img
+					src="${pageContext.request.contextPath}/Assets/img/ui-sam.jpg"
+					class="img-circle" width="60"></a>
+			</p>
+			<h5 class="centered">宅急送</h5>
 
-						<li class="mt">
-							<a class="hover" href="${pageContext.request.contextPath}/Back/notcollect.jsp">
-								<i class="fa fa-dashboard"></i>
-								<span>未揽收</span>
-							</a>
-						</li>
+			<li class="sub-menu"><a class="hover"
+				href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage0">
+					<i class="fa fa-dashboard"></i> <span>未揽收</span>
+			</a></li>
 
-						<li class="sub-menu">
-							<a class="hover" href="${pageContext.request.contextPath}/Back/collect.jsp">
-								<i class="fa fa-desktop"></i>
-								<span>已揽收</span>
-							</a>
+			<li class="sub-menu"><a class="hover"
+				href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage1">
+					<i class="fa fa-desktop"></i> <span>已揽收</span>
+			</a></li>
 
-						</li>
+			<li class="sub-menu"><a class="hover"
+				href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage2">
+					<i class="fa fa-cogs"></i> <span>未派件</span>
+			</a></li>
 
-						<li class="sub-menu">
-							<a class="hover" href="${pageContext.request.contextPath}/Back/notdispatch.jsp">
-								<i class="fa fa-cogs"></i>
-								<span>未派件</span>
-							</a>
+			<li class="sub-menu"><a class="hover"
+				href="${pageContext.request.contextPath}/CourierController?op=queryOrderByPage3"> <i
+					class="fa fa-desktop"></i> <span>已派件</span>
+			</a></li>
 
-						</li>
-						
-						<li class="sub-menu">
-							<a class="hover" href="${pageContext.request.contextPath}/Back/dispatch.jsp">
-								<i class="fa fa-desktop"></i>
-								<span>已派件</span>
-							</a>
-
-						</li>
-					</ul>
-					<!-- sidebar menu end-->
-				</div>
+		</ul>
+		<!-- sidebar menu end-->
+	</div>
 			</aside>
 			<!--sidebar end-->
 			<div class="copyrights">Collect from
@@ -125,6 +116,7 @@
 
 					<div class="row">
 						<div class="col-lg-9 main-chart">
+						<form action="${pageContext.request.contextPath}/CourierController?op=upcollectinfo" method="post" ">
 
 							<div class="table-responsive">
 								<table class="table table-striped">
@@ -144,29 +136,29 @@
 													<div class="infbox1">
 														<ul>
 															<li>
-																<label>订单编号</label><input name="" type="text" value="${order.ORDERNO}">
+																<label>订单编号</label><input name="orderNo" type="text" id="orderNo" value="${ob.ORDERNO}" autofocus>
 															</li>
 															</br>
 															<li>
-																<label>寄件人地址</label><input name="" type="text">
+																<label>寄件人地址</label><input name="senderAddress" type="text" value="${ob.SENDERADDRESS}" >
 															</li>
 															</br>
 															<li>
-																<label>收件人姓名</label><input name="" type="text">
+																<label>收件人姓名</label><input name="recriver" id="recriver" type="text" value="${ob.RECEIVER}" >
 															</li>
 															</br>
 															<li>
-																<label>收件人电话</label><input name="" type="text">
+																<label>收件人电话</label><input name="receiverMobile" id="receiverMobile" type="text" value="${ob.RECEIVERMOBILE}" >
 															</li>
 															</br>
 															<li>
-																<label>重量(kg)</label><input name="" type="text">
+																<label>重量(kg)</label><input name="goodsWeight" id="goodsWeight" type="text" value="${ob.GOODSWEIGHT}" >
 															</li>
 															<li>
 																<label>状态</label>
-																<select>
-																	<option value="混饭吃的小编">未揽件</option>
-																	<option value="混饭吃的小编">已揽件</option>
+																<select name="orderStatus" id="orderStatus">
+																	<option value="0">未揽件</option>
+																	<option value="1">已揽件</option>
 																</select>
 															</li>
 														</ul>
@@ -174,23 +166,23 @@
 													<div class="infbox2">
 														<ul>
 															<li>
-																<label>寄件人姓名</label><input name="" type="text">
+																<label>寄件人姓名</label><input name="sender" id="sender" type="text"  value="${ob.SENDER}">
 															</li>
 															</br>
 															<li>
-																<label>寄件人电话</label><input name="" type="text">
+																<label>寄件人电话</label><input name="senderMobile" id="senderMobile" type="text" value="${ob.SENDERMOBILE}">
 															</li>
 															</br>
 															<li>
-																<label>收件人地址</label><input name="" type="text">
+																<label>收件人地址</label><input name="receiverAddress" id="receiverAddress" type="text" value="${ob.RECEIVERADDRESS}">
 															</li>
 															</br>
 															<li>
-																<label>寄件日期</label><input name="" type="text">
+																<label>寄件日期</label><input name="orderDate" id="orderDate" type="text" value="${ob.ORDERDATE}">
 															</li>
 															</br>
 															<li>
-																<label>价格(元)</label><input name="" type="text">
+																<label>价格(元)</label><input name="goodsPrice" id="goodsPrice" type="text" value="${ob.GOODSPRICE}">
 															</li>
 														</ul>
 													</div>
@@ -206,7 +198,7 @@
 											<th>
 												<div class=wrap2>
 												<button class="btn btn-theme btn-block2" href="index.html" type="submit">修改</button>
-												<button class="btn btn-theme btn-block2" href="index.html" type="submit">取消</button>
+												<button class="btn btn-theme btn-block2" href="index.html" type="button">取消</button>
 												</div>
 											</th>
 										</tr>
@@ -214,6 +206,7 @@
 								</table>
 
 							</div>
+							</form>
 
 						</div>
 						<!-- /col-lg-9 END SECTION MIDDLE -->
