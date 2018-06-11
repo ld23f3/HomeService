@@ -135,7 +135,7 @@
 							<th>是否在职</th>
 							<th>入职日期</th>
 							<th>修改日期</th>
-							<th>操作</th>
+<!-- 							<th>操作</th> -->
 
 
 						</tr>
@@ -154,8 +154,8 @@
 									<td>${courier.COURIERSTATUS}</td>
 									<td>${courier.COURIERCREATE}</td>
 									<td>${courier.COURIERMODIFIED}</td>
-									<td><input type="button" class=" btn btn-warning" name=""
-										id="" value="修改" /></td>
+<!-- 									<td><input type="button" class=" btn btn-warning" name="" -->
+<!-- 										id="" value="修改" /></td> -->
 
 
 								</tr>
