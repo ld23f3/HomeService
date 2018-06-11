@@ -375,24 +375,26 @@
 			  $.post("${pageContext.request.contextPath}/UserController?op=addOrder",params,
 					function(data, status) {
 				
-				//尝试获取status data
-				//console.log("status"+status+",data :"+data);
+					//尝试获取status data
+					//console.log("data :"+data[0].ORDERNO);
 				
-				if(data=="true")
-				{
-				 alert("下单成功~");
-				 
+					
+					if(data>0)
+					{
+						alert("下单成功~您的訂單編號為【"+data+"】");
+						 		   
+						location.href = "index.jsp";
+							//break;
+						  
+					}
+					else
+					{
+						alert("下单失败,请填写完成信息");
+							//重新刷新页面
+							//location.reload(); 
+					}
 				
-				   
-				location.href = "index.jsp";
-				  
-				}
-			     else
-				{
-				alert("下单失败,请填写完成信息");
-				//重新刷新页面
-				location.reload(); 
-				}
+				
 				
 				
 						

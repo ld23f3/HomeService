@@ -77,7 +77,7 @@
 
 										<tr>
 
-											<td>${order.ORDERNO}</td>
+											<td><a href="#" onclick="getdetail(${order.ORDERNO})">${order.ORDERNO}</a></td>
 											<td>${order.SENDER}</td>
 											<td>${order.SENDERPROVINCENAME}${order.SENDERCITYNAME}${order.SENDERCOUNTYNAME}${order.SENDERADDRESS}</td>
 											<td>${order.SENDERMOBILE}</td>
@@ -185,9 +185,15 @@
 		   
 		   $("#return").click(function(){
 			   location.href = "index.jsp";
-		   })
-		   
+		   });
+		   		   
 	   });
+	   
+	   function getdetail(orderNo){
+		   
+		 location.href = "LogisticsController?op=query&orderNo="+ orderNo;
+		 console.log("orderNo="+orderNo);
+	   }
 	</script>
 </body>
 </html>

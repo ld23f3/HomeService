@@ -174,7 +174,7 @@ public class UserController extends HttpServlet {
 				//System.out.println("County:" + str);
 				// œÏ”¶
 				PrintWriter out = response.getWriter();
-				out.print(str);
+				out.print(orderNo);
 				out.close();
 					
 			}
