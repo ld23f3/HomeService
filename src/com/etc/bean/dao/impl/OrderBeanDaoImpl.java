@@ -69,9 +69,9 @@ public class OrderBeanDaoImpl implements OrderBeanDao {
 				"  LEFT JOIN CITY c on  O1.SENDERCITYID = c.CITYID\r\n" + 
 				"  LEFT JOIN  COUNTY co on  O1.SENDERCOUNTYID = CO.COUNTYID\r\n" + 
 				" LEFT JOIN PROVINCE p2 on RECEIVERPROVINCEID = p2.PROVINCEID\r\n" + 
-				"  LEFT JOIN CITY c2 on  O1.SENDERCITYID = c2.CITYID\r\n" + 
-				"  LEFT JOIN  COUNTY co2 on  O1.SENDERCOUNTYID = CO2.COUNTYID\r\n" + 
-				"  where O1.SENDERMOBILE = ? or O1.RECEIVERMOBILE =?" ;
+				"  LEFT JOIN CITY c2 on  O1.RECEIVERCITYID = c2.CITYID\r\n" + 
+				"  LEFT JOIN  COUNTY co2 on  O1.RECEIVERCOUNTYID = CO2.COUNTYID\r\n" + 
+				"  where O1.SENDERMOBILE = ? or O1.RECEIVERMOBILE = ?" ;
 		@SuppressWarnings("unchecked")
 		//List<OrderBean> list =(List<OrderBean>) DBUtil.select(sql, OrderBean.class, mobile,mobile);
 		PageData<OrderBean> pd= DBUtil.getOraclePage(sql, pageNum, pageSize, OrderBean.class, mobile,mobile);
