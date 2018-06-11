@@ -42,11 +42,10 @@ public class LogisticsController2 extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-
+		response.setCharacterEncoding("utf-8");
 		String op = request.getParameter("op");
 		System.out.println(op);
 		if (null == op || "query".equals(op)) {
-
 			doQuery(request, response);
 		} else if ("get".equals(op)) {
 			doQuery2(request, response);
@@ -65,42 +64,41 @@ public class LogisticsController2 extends HttpServlet {
 			orderNo = Integer.parseInt(orderNoStr);
 		}
 
-		//LogisticsService ls = new LogisticsServiceImpl();
+		// LogisticsService ls = new LogisticsServiceImpl();
 
-//		List<Logistics> list = new ArrayList<Logistics>();
-//		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
-//		list.add(l);
+		// List<Logistics> list = new ArrayList<Logistics>();
+		// Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
+		// list.add(l);
 		List<LogisticsBean> list = ls.queryTruckRoutingByOrderNo(orderNo);
 		for (LogisticsBean logisticsBean : list) {
 			System.out.println(logisticsBean);
 		}
-
+		// System.out.println("zoui");
 		// 将查询的关键字也存储起来 传递到jsp
 		request.setAttribute("logistics", list);
-		
+
 		// 转发到页面
-		request.getRequestDispatcher("logistics.jsp").forward(request, response);
+		request.getRequestDispatcher("Manager/logistics.jsp").forward(request, response);
 	}
-	
+
 	protected void doQuery2(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int orderNo = 0;
-		if (null != request.getParameter("orderNo")) {
-			orderNo = Integer.parseInt(request.getParameter("orderNo"));
-			// orderNo = new String(orderNo.getBytes("iso-8859-1"), "utf-8");
-			System.out.println(orderNo);
+		String orderNoStr = request.getParameter("orderNo");
+		if (!(null == orderNoStr || "".equals(orderNoStr))) {
+			orderNo = Integer.parseInt(orderNoStr);
 		}
-		// List<Logistics> list = ls.queryLogisticsByOrderNo(1);
-		// for (Logistics logistics : list) {
-		// System.out.println(logistics);
-		// }
-		//System.out.println(list);
+		List<LogisticsBean> list = ls.queryTruckRoutingByOrderNo(orderNo);
+		for (LogisticsBean logistics : list) {
+			System.out.println(logistics);
+		}
+		// System.out.println(list);
 		// 将查询的关键字也存储起来 传递到jsp
-		//request.setAttribute("logistics", list);
-
+		request.setAttribute("orderNo", orderNoStr);
+		request.setAttribute("logistics", list);
 		// 转发到页面
-		request.getRequestDispatcher("logistics.jsp").forward(request, response);
+		request.getRequestDispatcher("Manager/logistics.jsp").forward(request, response);
 	}
 
 	/**
