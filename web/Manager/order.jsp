@@ -80,14 +80,14 @@
 						<h5 class="centered">宅急送</h5>
 
 						<li class="mt">
-							<a class="hover" href="order.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Manager/order.jsp">
 								<i class="fa fa-dashboard"></i>
 								<span>订单管理</span>
 							</a>
 						</li>
 
 						<li class="sub-menu">
-							<a class="hover" href="Courier.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Manager/courier.jsp">
 								<i class="fa fa-desktop"></i>
 								<span>快递员管理</span>
 							</a>
@@ -95,7 +95,7 @@
 						</li>
 
 						<li class="sub-menu">
-							<a class="hover" href="logistics.html">
+							<a class="hover" href="${pageContext.request.contextPath}/Manager/logistics.jsp">
 								<i class="fa fa-cogs"></i>
 								<span>物流管理</span>
 							</a>
