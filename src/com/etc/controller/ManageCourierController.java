@@ -62,7 +62,7 @@ public class ManageCourierController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int pageNum = 1;
-		int pageSize = 4;
+		int pageSize = 10;
 		
 		String like = request.getParameter("like");
 		String pageNumStr = request.getParameter("pageNum");
@@ -81,8 +81,8 @@ public class ManageCourierController extends HttpServlet {
 		// }
 		if (null != like && !("".equals(like))) {
 			// queryLike =request.getParameter("queryLike");
-			like = new String(like.getBytes("iso-8859-1"), "utf-8");
-
+//			like = new String(like.getBytes("iso-8859-1"), "utf-8");
+			System.out.println(like);
 		}
 
 		// String url ="search.jsp";
