@@ -26,4 +26,9 @@ public class LogisticsServiceImpl implements LogisticsService {
 		return ld.queryLogisticsByOrderNo(orderNo);
 	}
 
+	@Override
+	public boolean updateLogisticsByOrderNo(int orderNo) {
+		return ld.updateLogisticsByOrderNo(orderNo);
+	}
+
 }

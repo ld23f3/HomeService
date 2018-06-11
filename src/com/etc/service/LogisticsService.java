@@ -20,9 +20,14 @@ public interface LogisticsService {
 	 */
 	public boolean addLogistics(Connection conn, Logistics logistics);
 	/**
-	 * 根据订单编号查询物流信息
+	 * 根据订单编号查询物流信息(弃用)
 	 * @return
 	 */
 	public List<Logistics> queryLogisticsByOrderNo(int orderNo);
-	
+	/**
+	 * 根据订单编号更新物流信息
+	 * @param orderNo
+	 * @return
+	 */
+	public boolean updateLogisticsByOrderNo(int orderNo);
 }

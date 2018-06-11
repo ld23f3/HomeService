@@ -30,4 +30,12 @@ public class LogisticsDaoImpl implements LogisticsDao {
 				logistics.getCOUNTYID(), logistics.getDETAILADDRESS()) > 0;
 	}
 
+	@Override
+	public boolean updateLogisticsByOrderNo(int orderNo) {
+		String sql = "UPDATE LOGISTICS SET CREATEDATE = SYSDATE ,SENDSTATE = 1\r\n" + 
+				"WHERE LOGISTICSNO = (SELECT (min (LOGISTICSNO)) from LOGISTICS where ORDERNO = ? and SENDSTATE = 0)\r\n" + 
+				"or ORDERNO = ? and countyid = 0 and SENDSTATE = 0 ";
+		return DBUtil.execute(sql, orderNo,orderNo) > 0;
+	}
+
 }
