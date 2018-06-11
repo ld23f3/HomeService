@@ -47,7 +47,7 @@
 						<li class="now"><em>订单查询</em><span>&nbsp;</span></li>
 					</ul>
 					<div class="tabCont" style="display: block;">
-											<div class="follow_m">
+						<div class="follow_m">
 							<div class="space_hx">&nbsp;</div>
 							<div class="follow_mtop">
 								<form action="" method="post">
@@ -58,43 +58,59 @@
 
 							</div>
 							<div class="space_hx">&nbsp;</div>
-					</div>
-					<div id="web_m" class="web_m">
-						<table class="wang" cellpadding="0" cellspacing="0">
-							<tr>
-								<th width="70" scope="col">订单编号</th>
-								<th width="70" scope="col">寄件人</th>
-								<th width="70" scope="col">寄件人地址</th>
-								<th width="70" scope="col">寄件人手机</th>
-								<th width="70" scope="col">收件人</th>
-								<th width="70" scope="col">收件人地址</th>
-								<th width="70" scope="col">收件人手机</th>
-								<th width="90" scope="col">下单日期</th>
-								<th width="90" scope="col" hidden>订单状态</th>
-							</tr>
-							<c:if test="${pd!=null}">
-											<c:forEach items="${pd.data}" var="order">
+						</div>
+						<div id="web_m" class="web_m">
+							<table class="wang" cellpadding="0" cellspacing="0">
+								<tr>
+									<th width="70" scope="col">订单编号</th>
+									<th width="70" scope="col">寄件人</th>
+									<th width="70" scope="col">寄件人地址</th>
+									<th width="70" scope="col">寄件人手机</th>
+									<th width="70" scope="col">收件人</th>
+									<th width="70" scope="col">收件人地址</th>
+									<th width="70" scope="col">收件人手机</th>
+									<th width="90" scope="col">下单日期</th>
+									<th width="90" scope="col" hidden>订单状态</th>
+								</tr>
+								<c:if test="${pd!=null}">
+									<c:forEach items="${pd.data}" var="order">
 
-												<tr>
+										<tr>
 
-													<td>${order.ORDERNO}</td>
-													<td>${order.SENDER}</td>
-													<td>${order.SENDERPROVINCENAME}${order.SENDERCITYNAME}${order.SENDERCOUNTYNAME}${order.SENDERADDRESS}</td>
-													<td>${order.SENDERMOBILE}</td>
-													<td>${order.RECEIVER}</td>
-													<td>${order.RECEIVERPROVINCENAME}${order.RECEIVERCITYNAME}${order.RECEIVERCOUNTYNAME}${order.RECEIVERADDRESS}</td>
-													<td>${order.RECEIVERMOBILE}</td>
-													<td>${order.ORDERDATE}</td>
-													<%-- 													<td>${order.ORDERSTATUS}</td> --%>
-													<%-- 													<td >${order.ORDERRMODIFIED}</td> --%>
+											<td>${order.ORDERNO}</td>
+											<td>${order.SENDER}</td>
+											<td>${order.SENDERPROVINCENAME}${order.SENDERCITYNAME}${order.SENDERCOUNTYNAME}${order.SENDERADDRESS}</td>
+											<td>${order.SENDERMOBILE}</td>
+											<td>${order.RECEIVER}</td>
+											<td>${order.RECEIVERPROVINCENAME}${order.RECEIVERCITYNAME}${order.RECEIVERCOUNTYNAME}${order.RECEIVERADDRESS}</td>
+											<td>${order.RECEIVERMOBILE}</td>
+											<td>${order.ORDERDATE}</td>
+											<%-- 													<td>${order.ORDERSTATUS}</td> --%>
+											<%-- 													<td >${order.ORDERRMODIFIED}</td> --%>
 
 
-												</tr>
-											</c:forEach>
-										</c:if>
+										</tr>
+									</c:forEach>
+								</c:if>
 
-						</table>
-
+							</table>
+							<!--分页导航-->
+							<div class="pclady_page">
+								<a href="javascript:void(0)" id="prePage">上一页</a>
+								<c:forEach begin="1" end="${pd.totalPage}" var="index">
+									<!-- 激活当前页码显示效果 -->
+									<c:if test="${index == pd.page}">
+										<a href="javascript:void(0)" class="now pageNo">${index}</a>
+									
+									</c:if>
+									<c:if test="${index != pd.page}">
+										<a href="javascript:void(0)" class="pageNo">${index}</a>
+									</c:if>
+								</c:forEach>
+								<a href="javascript:void(0)" id="nextPage">下一页</a> <a
+									href="javascript:void(0)" target="_blank" id="return">返回首页</a>
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -103,14 +119,13 @@
 
 		<div class="space_hx">&nbsp;</div>
 	</div>
-	</div>
 	<!--中间部分-->
 	<div class="space_hx">&nbsp;</div>
 	<!--底部-->
 	<div class="foot_bg">
 		<div class="foot">
 			<div class="foot_t">
-					<a href="group_intro.jsp">团队介绍</a>
+				<a href="group_intro.jsp">团队介绍</a>
 			</div>
 			<div class="copy">Copyright&copy;&nbsp;2012-2015&nbsp;
 				宅急送有限责任公司.&nbsp;&nbsp;All&nbsp;&nbsp;rights&nbsp;&nbsp;reserved.
