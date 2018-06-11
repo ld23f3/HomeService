@@ -1,6 +1,7 @@
 package com.etc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import com.etc.bean.dao.LogisticsBeanDao;
 import com.etc.bean.dao.impl.LogisticsBeanDaoImpl;
 import com.etc.bean.entity.LogisticsBean;
 import com.etc.entity.Logistics;
+import com.etc.entity.Province;
 import com.etc.service.LogisticsService;
 import com.etc.service.impl.LogisticsServiceImpl;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class LogisticsController
@@ -41,47 +44,58 @@ public class LogisticsController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html ; charset=UTF-8");
 
 		String op = request.getParameter("op");
-		System.out.println(op);
-		if (null == op || "query".equals(op)) {
+		System.out.println("op=" + op);
+
+		if ("queryCity".equals(op)) {
 
 			doQuery(request, response);
 		} else if ("get".equals(op)) {
+
 			doQuery2(request, response);
 		}
+		// if (null == op || "query".equals(op)) {
+		// doQuery(request, response);
+		// } else if ("get".equals(op)) {
+		// doQuery2(request, response);
+		// }
 
 	}
 
 	protected void doQuery(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		PrintWriter out = response.getWriter();
+
 		int orderNo = 1;
 		// System.out.println("jinlaile");
 		// System.out.println(request.getParameter("orderNo"));
 		String orderNoStr = request.getParameter("orderNo");
+
 		if (null == orderNoStr || "".equals(orderNoStr)) {
 		} else {
 			orderNo = Integer.parseInt(orderNoStr);
 		}
 
-		//		LogisticsService ls = new LogisticsServiceImpl();
-
-		//		List<Logistics> list = new ArrayList<Logistics>();
-		//		Logistics l = new Logistics(1, 1, 1, 1, 1, "ffff", "lll");
-		//		list.add(l);
-		
-		
 		List<LogisticsBean> list = ls.queryTruckRoutingByOrderNo(orderNo);
 		for (LogisticsBean logisticsBean : list) {
 			System.out.println(logisticsBean);
 		}
 
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(list);
+
+		out.println(jsonString);
+		out.close();
+
 		// 将查询的关键字也存储起来 传递到jsp
-		request.setAttribute("logistics", list);
-		
+		// request.setAttribute("logistics", list);
+
 		// 转发到页面
-		request.getRequestDispatcher("follow.jsp").forward(request, response);
+		// request.getRequestDispatcher("follow.jsp").forward(request, response);
 	}
 
 	protected void doQuery2(HttpServletRequest request, HttpServletResponse response)
@@ -97,9 +111,9 @@ public class LogisticsController extends HttpServlet {
 		// for (Logistics logistics : list) {
 		// System.out.println(logistics);
 		// }
-		//System.out.println(list);
+		// System.out.println(list);
 		// 将查询的关键字也存储起来 传递到jsp
-		//request.setAttribute("logistics", list);
+		// request.setAttribute("logistics", list);
 
 		// 转发到页面
 		request.getRequestDispatcher("follow.jsp").forward(request, response);

@@ -11,7 +11,9 @@
 <link rel="stylesheet" type="text/css" href="Assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="Assets/css/thems.css" />
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico"/>
+<link rel="shortcut icon" href="Assets/images/bitbug_favicon.ico" />
+<link rel="stylesheet" href="Assets/css/layui/css/layui.css" media="all">
+<script src="Assets/css/layui/layui.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -51,39 +53,15 @@
 							<div class="follow_mtop">
 								<form action="" method="post">
 									<input name="orderNo" id="orderNo" type="text"
-										placeholder="请输入订单编号"> <a id="btnSearch">查询</a>
+										placeholder="请输入订单编号"> <a href="#" id="btnSearch">查询</a>
 								</form>
 							</div>
 							<div class="space_hx">&nbsp;</div>
 							<div class="follow_main">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>订单编号</th>
-											<th>省</th>
-											<th>市</th>
-											<th>县/区</th>
-											<th>更新时间</th>
 
-
-										</tr>
-									</thead>
-									<tbody>
-										<c:if test="${logistics!=null}">
-											<c:forEach items="${logistics}" var="log">
-												<tr>
-													<td>${log.ORDERNO}</td>
-													<td>${log.PROVINCEID}</td>
-													<td>${log.CITYID}</td>
-													<td>${log.COUNTYID}</td>
-													<td>33</td>
-													<%-- 												<td>${log.MODIFIED}</td> --%>
-
-												</tr>
-											</c:forEach>
-										</c:if>
-									</tbody>
-								</table>
+								<ul id="myline" class="layui-timeline">
+	
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -108,13 +86,47 @@
 	<!--底部-->
 	<script>
 		$(function() {
-			$("#btnSearch").click(
-					function() {
-						var orderNo = $("#orderNo").val();
-						//点击查询按钮后，页面跳转到"LogisticsController?op=get&orderNo=" + orderNo
-						location.href = "LogisticsController?op=query&orderNo="
-								+ orderNo;
-					});
+			$("#btnSearch").click(function() {
+				var orderNo = $("#orderNo").val();
+
+				$.post("LogisticsController?op=queryCity&orderNo="+ orderNo,
+						function(data, status) {
+							array = JSON.parse(data);
+							
+							console.log(array.length);
+							
+							$.each(array,function(index,log) {
+								
+								var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+									+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+									+ log.CREATEDATE+ "</h3>"+ "<p>【運輸中】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+									+ "</p>"+ "</div></li>"
+								
+								if(index==0){
+									var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+										+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+										+ log.CREATEDATE+ "</h3>"+ "<p>【已攬件】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+										+ "</p>"+ "</div></li>"
+								}
+								
+								if(index==(array.length-1)){
+									var s ="<li class='layui-timeline-item'><i class='layui-icon layui-timeline-axis'></i>"
+										+ "<div class='layui-timeline-content layui-text'>"+ "<h3 class='layui-timeline-title'>"
+										+ log.CREATEDATE+ "</h3>"+ "<p>【已送達】"+ log.CITYNAME+ ""+ log.DETAILADDRESS
+										+ "</p>"+ "</div></li>"
+								}
+						
+								
+									
+								$("#myline").append(s);
+								});
+																						
+						});
+
+								//点击查询按钮后，页面跳转到"LogisticsController?op=get&orderNo=" + orderNo
+								//location.href = "LogisticsController?op=query&orderNo="
+								//+ orderNo;
+				});
 		});
 	</script>
 </body>
