@@ -105,9 +105,9 @@ public class LogisticsBeanDaoImpl implements LogisticsBeanDao {
 				"ORDER BY L.LOGISTICSNO";
 		@SuppressWarnings("unchecked")
 		List<LogisticsBean> list = (List<LogisticsBean>)DBUtil.select(sql, LogisticsBean.class, orderNo);
-		for (LogisticsBean logisticsBean : list) {
-			System.out.println(logisticsBean);
-		}
+//		for (LogisticsBean logisticsBean : list) {
+//			System.out.println(logisticsBean);
+//		}
 //		CourierService cs = new CourierServiceImpl();
 //		Courier sendCourier = cs.getCourierByCountyId(order.getSENDERCOUNTYID());
 //		System.out.println(sendCourier);
