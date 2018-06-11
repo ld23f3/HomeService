@@ -10,6 +10,15 @@ public interface OrderBeanDao {
 	 * @return
 	 */
 	public boolean addOrderBean(OrderBean orderBean);
+	
+	/**
+	 * 用户完整的下单功能  返回訂單編號
+	 * @param orderBean
+	 * @return
+	 */
+	public int addOrderBeanReturnNo(OrderBean orderBean);
+	
+	
 	/**
 	 * 精确匹配手机号码,分页查询出相关订单信息
 	 * @param pageNum 查询第几页

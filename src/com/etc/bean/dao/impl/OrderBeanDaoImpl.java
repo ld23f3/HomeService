@@ -77,5 +77,39 @@ public class OrderBeanDaoImpl implements OrderBeanDao {
 		PageData<OrderBean> pd= DBUtil.getOraclePage(sql, pageNum, pageSize, OrderBean.class, mobile,mobile);
 		return pd;
 	}
+	@Override
+	public int addOrderBeanReturnNo(OrderBean orderBean) {
+		// TODO Auto-generated method stub
+		//插入需要用事務查詢
+		int orderNo = 0;//先生成一個編號
+		Connection conn = DBUtil.getConn();
+		if( conn == null)
+			return 0;//獲取連接錯誤,增加失敗
+		
+		//初始化一個訂單編號.之後表的操作都要對其進行操作
+		orderNo = ods.initializeOrderNo(conn);
+		orderBean.setORDERNO(orderNo);
+		//生成編號錯誤,直接返回下單失敗
+		if(orderNo == 0)
+			return 0;
+		Order order = new Order(orderBean.getORDERNO(), orderBean.getSENDER(), orderBean.getSENDERPROVINCEID(), orderBean.getSENDERCITYID(), orderBean.getSENDERCOUNTYID(), orderBean.getSENDERADDRESS(), orderBean.getSENDERMOBILE(), orderBean.getRECEIVER(), orderBean.getRECEIVERPROVINCEID(), orderBean.getRECEIVERCITYID(), orderBean.getRECEIVERCOUNTYID(), orderBean.getRECEIVERADDRESS(), orderBean.getRECEIVERMOBILE());
+		Goods goods = new Goods(orderBean.getGOODSTYPE(), orderBean.getGOODSWEIGHT(), orderBean.getGOODSNUMBER(), orderBean.getGOODSPRICE(), orderBean.getORDERNO());
+		
+		//判斷增加訂單,失敗則下單失敗,回滾記錄
+		int addOrderState = ods.addOrder(conn, order);
+		//判斷增加物品詳情.失敗則下單失敗.回滾記錄
+		int addGoodsState = gs.addGoods(conn, goods);
+		if(addOrderState > 0 && addGoodsState > 0) {
+			//訂單跟物品詳情表插入成功
+			return orderNo;
+		}else {
+			try {
+				conn.rollback();
+			} catch (SQLException e) {
+				System.out.println("下單失敗.回滾失敗");
+			}
+		}
+		return 0;
+	}
 
 }
